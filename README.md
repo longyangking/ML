@@ -9,3 +9,6 @@ Machine Learning Notes
 + Deep Learing
 + Online Learning
 + Coming soon
+
+##Description
+Open .ipynb with ![Jupyter](http://jupyter.org/)
