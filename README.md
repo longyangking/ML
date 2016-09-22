@@ -11,4 +11,4 @@ Machine Learning Notes
 + Coming soon
 
 ##Description
-Open .ipynb with ![Jupyter](http://jupyter.org/)
+Open .ipynb with Jupyter
