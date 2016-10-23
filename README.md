@@ -1,5 +1,5 @@
 # ML
-Machine Learning Notes
+Machine Learning Notes & Demo
 
 ##Content
 + Softmax Regression
