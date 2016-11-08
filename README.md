@@ -11,4 +11,5 @@ Machine Learning Notes & Demo
 + Coming soon
 
 ##Description
-Open .ipynb with Jupyter
+Open .ipynb with Jupyter  
+Open .nb with Mathematica (>10.2) [stylesheet](https://github.com/EverettYou/CambriaArticle)
