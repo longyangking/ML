@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      1257,         50]
-NotebookOptionsPosition[       887,         32]
-NotebookOutlinePosition[      1251,         48]
-CellTagsIndexPosition[      1208,         45]
+NotebookDataLength[      8374,        303]
+NotebookOptionsPosition[      6786,        250]
+NotebookOutlinePosition[      7178,        267]
+CellTagsIndexPosition[      7135,        264]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -26,12 +26,231 @@ Cell["Cost Function", "Title",
 Cell["Yang Long", "Author",
  CellChangeTimes->{{3.687660149336782*^9, 3.687660150472472*^9}}],
 
+Cell[CellGroupData[{
+
+Cell["Definition", "Subsubsection",
+ CellChangeTimes->{{3.687660145071389*^9, 3.687660145615634*^9}, {
+  3.687685680615694*^9, 3.6876856822629175`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["0-1", "Subsubsubsection",
+ CellChangeTimes->{{3.6876856887594905`*^9, 3.6876856990067854`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"L", "(", 
+    RowBox[{"Y", ",", 
+     RowBox[{"f", "(", "X", ")"}]}], ")"}], "=", 
+   RowBox[{"{", GridBox[{
+      {
+       RowBox[{"1", ",", " ", 
+        RowBox[{"Y", "\[NotEqual]", 
+         RowBox[{"f", "(", "X", ")"}]}]}]},
+      {
+       RowBox[{"0", ",", " ", 
+        RowBox[{"Y", "=", 
+         RowBox[{"f", "(", "X", ")"}]}]}]}
+     }]}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687685701185336*^9, 3.687685722551546*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Square", "Subsubsubsection",
+ CellChangeTimes->{{3.687685730472188*^9, 3.6876857464404716`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"L", "(", 
+    RowBox[{"Y", ",", 
+     RowBox[{"f", "(", "X", ")"}]}], ")"}], "=", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"Y", "-", 
+      RowBox[{"f", "(", "X", ")"}]}], ")"}], "2"]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687685753192563*^9, 3.6876857586884756`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Absolute", "Subsubsubsection",
+ CellChangeTimes->{{3.6876857637680817`*^9, 3.6876857687436233`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"L", "(", 
+    RowBox[{"Y", ",", 
+     RowBox[{"f", "(", "X", ")"}]}], ")"}], "=", 
+   RowBox[{"|", 
+    RowBox[{"Y", "-", 
+     RowBox[{"f", "(", "X", ")"}]}], "|"}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687685858298373*^9, 3.6876858663200836`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Logarithm", "Subsubsubsection",
+ CellChangeTimes->{{3.6876857844327917`*^9, 3.687685786128011*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"L", "(", 
+    RowBox[{"Y", ",", 
+     RowBox[{"f", "(", "X", ")"}]}], ")"}], "=", 
+   RowBox[{
+    RowBox[{"-", "log"}], " ", 
+    RowBox[{"P", "(", 
+     RowBox[{"Y", "|", "X"}], ")"}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876858733871145`*^9, 3.687685878095481*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["Model", "Subsubsection",
- CellChangeTimes->{{3.687660145071389*^9, 3.687660145615634*^9}}]
+ CellChangeTimes->{{3.6876859305598135`*^9, 3.6876859311602416`*^9}}],
+
+Cell[TextData[{
+ "Given a train set ",
+ Cell[BoxData[
+  FormBox["T", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ":"
+}], "TextNoIndent",
+ CellChangeTimes->{{3.687685957561035*^9, 3.687685966560454*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"T", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "1"], ",", 
+       SubscriptBox["y", "1"]}], ")"}], ",", 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "2"], ",", 
+       SubscriptBox["y", "2"]}], ")"}], ",", "...", ",", 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "i"], ",", 
+       SubscriptBox["y", "i"]}], ")"}], ",", "...", ",", 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "N"], ",", 
+       SubscriptBox["y", "N"]}], ")"}]}], "}"}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687685968695981*^9, 3.687685992088614*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Empirical risk", "Subsubsubsection",
+ CellChangeTimes->{{3.6876860276899557`*^9, 3.6876860306881046`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["R", "emp"], "(", "f", ")"}], "=", 
+   RowBox[{
+    FractionBox["1", "N"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "N"], 
+     RowBox[{"L", "(", 
+      RowBox[{
+       SubscriptBox["y", "i"], ",", 
+       RowBox[{"f", "(", 
+        SubscriptBox["x", "i"], ")"}]}], ")"}]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876860588881683`*^9, 3.6876860794317894`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   UnderscriptBox["min", 
+    RowBox[{"f", "\[Element]", "F"}]], 
+   FractionBox["1", "N"], 
+   RowBox[{
+    OverscriptBox[
+     UnderscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}]], "N"], 
+    RowBox[{"L", "(", 
+     RowBox[{
+      SubscriptBox["y", "i"], ",", 
+      RowBox[{"f", "(", 
+       SubscriptBox["x", "i"], ")"}]}], ")"}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876860826400785`*^9, 3.6876860939431195`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Structure risk", "Subsubsubsection",
+ CellChangeTimes->{{3.6876860490091324`*^9, 3.687686055568802*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["R", "str"], "(", "f", ")"}], "=", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "N"], 
+     RowBox[{
+      OverscriptBox[
+       UnderscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}]], "N"], 
+      RowBox[{"L", "(", 
+       RowBox[{
+        SubscriptBox["y", "i"], ",", 
+        RowBox[{"f", "(", 
+         SubscriptBox["x", "i"], ")"}]}], ")"}]}]}], "+", 
+    RowBox[{"\[Lambda]", " ", 
+     RowBox[{"J", "(", "f", ")"}]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687686105911654*^9, 3.6876861242407*^9}}],
+
+Cell["To avoid overfitting, so", "TextIndent",
+ CellChangeTimes->{{3.6876861309614725`*^9, 3.6876861575604267`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    UnderscriptBox["min", 
+     RowBox[{"f", "\[Element]", "F"}]], 
+    FractionBox["1", "N"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "N"], 
+     RowBox[{"L", "(", 
+      RowBox[{
+       SubscriptBox["y", "i"], ",", 
+       RowBox[{"f", "(", 
+        SubscriptBox["x", "i"], ")"}]}], ")"}]}]}], "+", 
+   RowBox[{"\[Lambda]", " ", 
+    RowBox[{"J", "(", "f", ")"}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876861604084454`*^9, 3.6876861687593813`*^9}}]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 },
-WindowSize->{775, 693},
-WindowMargins->{{404, Automatic}, {Automatic, 54}},
+WindowSize->{798, 808},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+Magnification:>1.4 Inherited,
 FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (2015\:5e747\:67087\
 \:65e5)",
 StyleDefinitions->"Cambria Article.nb"
@@ -48,9 +267,43 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 96, 1, 83, "Title"],
-Cell[679, 25, 93, 1, 58, "Author"],
-Cell[775, 28, 96, 1, 30, "Subsubsection"]
+Cell[580, 22, 96, 1, 115, "Title"],
+Cell[679, 25, 93, 1, 81, "Author"],
+Cell[CellGroupData[{
+Cell[797, 30, 152, 2, 43, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[974, 36, 101, 1, 41, "Subsubsubsection"],
+Cell[1078, 39, 508, 16, 65, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1623, 60, 102, 1, 41, "Subsubsubsection"],
+Cell[1728, 63, 359, 11, 42, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2124, 79, 106, 1, 41, "Subsubsubsection"],
+Cell[2233, 82, 331, 10, 45, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2601, 97, 105, 1, 41, "Subsubsubsection"],
+Cell[2709, 100, 353, 11, 45, "DisplayFormulaNumbered"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3111, 117, 100, 1, 43, "Subsubsection"],
+Cell[3214, 120, 212, 7, 28, "TextNoIndent"],
+Cell[3429, 129, 685, 22, 42, "DisplayFormulaNumbered"],
+Cell[CellGroupData[{
+Cell[4139, 155, 112, 1, 41, "Subsubsubsection"],
+Cell[4254, 158, 518, 17, 84, "DisplayFormulaNumbered"],
+Cell[4775, 177, 495, 16, 84, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5307, 198, 110, 1, 41, "Subsubsubsection"],
+Cell[5420, 201, 611, 20, 84, "DisplayFormulaNumbered"],
+Cell[6034, 223, 116, 1, 35, "TextIndent"],
+Cell[6153, 226, 593, 19, 84, "DisplayFormulaNumbered"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 }
 ]

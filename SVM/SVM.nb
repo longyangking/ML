@@ -2406,7 +2406,7 @@ Cell[23860, 583, 201, 5, 46, "DisplayFormulaNumbered"],
 Cell[24064, 590, 541, 16, 50, "DisplayFormulaNumbered"],
 Cell[24608, 608, 393, 11, 68, "TextIndent"],
 Cell[25004, 621, 571, 17, 70, "DisplayFormulaNumbered"],
-Cell[25578, 640, 186, 2, 21, "SmallText"]
+Cell[25578, 640, 186, 2, 31, "SmallText"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[25801, 647, 110, 1, 47, "Subsubsection"],
@@ -2427,11 +2427,11 @@ Cell[30284, 790, 544, 16, 73, "TextIndent"]
 Cell[CellGroupData[{
 Cell[30865, 811, 192, 2, 47, "Subsubsection"],
 Cell[31060, 815, 298, 5, 97, "TextIndent"],
-Cell[31361, 822, 839, 22, 113, "DisplayFormulaNumbered"],
-Cell[32203, 846, 1786, 57, 155, "TextNoIndent"],
+Cell[31361, 822, 839, 22, 169, "DisplayFormulaNumbered"],
+Cell[32203, 846, 1786, 57, 232, "TextNoIndent"],
 Cell[CellGroupData[{
-Cell[34014, 907, 110, 1, 44, "Subsubsubsection"],
-Cell[34127, 910, 238, 8, 38, "TextIndent"],
+Cell[34014, 907, 110, 1, 66, "Subsubsubsection"],
+Cell[34127, 910, 238, 8, 57, "TextIndent"],
 Cell[34368, 920, 903, 29, 93, "DisplayFormulaNumbered"],
 Cell[35274, 951, 240, 8, 38, "TextIndent"],
 Cell[35517, 961, 851, 29, 93, "DisplayFormulaNumbered"]
@@ -2458,8 +2458,8 @@ Cell[38587, 1070, 105, 1, 44, "Subsubsubsection"],
 Cell[38695, 1073, 957, 31, 167, "DisplayFormulaNumbered"],
 Cell[39655, 1106, 208, 7, 31, "TextNoIndent"],
 Cell[39866, 1115, 779, 24, 87, "DisplayFormulaNumbered"],
-Cell[40648, 1141, 103, 1, 31, "TextNoIndent"],
-Cell[40754, 1144, 2096, 70, 258, "DisplayFormulaNumbered"],
+Cell[40648, 1141, 103, 1, 46, "TextNoIndent"],
+Cell[40754, 1144, 2096, 70, 387, "DisplayFormulaNumbered"],
 Cell[42853, 1216, 138, 1, 31, "TextNoIndent"],
 Cell[42994, 1219, 1054, 35, 153, "DisplayFormulaNumbered"],
 Cell[44051, 1256, 142, 1, 31, "TextNoIndent"],
@@ -2531,18 +2531,18 @@ Cell[70896, 2140, 99, 1, 31, "TextNoIndent"],
 Cell[70998, 2143, 1391, 45, 203, "DisplayFormulaNumbered"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[72426, 2193, 98, 1, 47, "Subsubsection"],
+Cell[72426, 2193, 98, 1, 70, "Subsubsection"],
 Cell[CellGroupData[{
-Cell[72549, 2198, 116, 1, 44, "Subsubsubsection"],
-Cell[72668, 2201, 1012, 32, 130, "DisplayFormulaNumbered"]
+Cell[72549, 2198, 116, 1, 66, "Subsubsubsection"],
+Cell[72668, 2201, 1012, 32, 195, "DisplayFormulaNumbered"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[73717, 2238, 112, 1, 44, "Subsubsubsection"],
-Cell[73832, 2241, 1399, 45, 209, "DisplayFormulaNumbered"]
+Cell[73717, 2238, 112, 1, 66, "Subsubsubsection"],
+Cell[73832, 2241, 1399, 45, 313, "DisplayFormulaNumbered"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[75268, 2291, 116, 1, 44, "Subsubsubsection"],
-Cell[75387, 2294, 1399, 46, 209, "DisplayFormulaNumbered"]
+Cell[75268, 2291, 116, 1, 66, "Subsubsubsection"],
+Cell[75387, 2294, 1399, 46, 313, "DisplayFormulaNumbered"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
