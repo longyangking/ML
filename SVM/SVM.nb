@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     34113,        904]
-NotebookOptionsPosition[     31219,        822]
-NotebookOutlinePosition[     31611,        839]
-CellTagsIndexPosition[     31568,        836]
+NotebookDataLength[     84638,       2544]
+NotebookOptionsPosition[     76826,       2345]
+NotebookOutlinePosition[     77218,       2362]
+CellTagsIndexPosition[     77175,       2359]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -636,7 +636,11 @@ Cell[BoxData[
      "1"}], ",", 
    RowBox[{"i", "=", "1"}], ",", "...", ",", "n"}], 
   TraditionalForm]], "DisplayFormulaNumbered",
- CellChangeTimes->{{3.687510915178688*^9, 3.6875109424664793`*^9}}]
+ CellChangeTimes->{{3.687510915178688*^9, 3.6875109424664793`*^9}}],
+
+Cell["Lack of full mathematical evidence and derivation", "SmallText",
+ CellChangeTimes->{{3.68765936014287*^9, 3.687659366037575*^9}, {
+  3.6876594017589865`*^9, 3.687659411719143*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -796,33 +800,1552 @@ Cell[TextData[{
      RowBox[{"\[Omega]", ",", "b"}]], " ", 
     RowBox[{"L", "(", 
      RowBox[{"\[Omega]", ",", "b", ",", "\[Alpha]"}], ")"}]}], 
-   TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   TraditionalForm]]],
  " will be the new eigenequation. (1)Minimize L by \[Omega], b firstly; \
 (2)Maximize L by \[Alpha]."
 }], "TextIndent",
  CellChangeTimes->{{3.687512088764205*^9, 3.687512159284941*^9}}]
 }, Open  ]],
 
-Cell["KKT", "Subsubsection",
- CellChangeTimes->{{3.6875121706197805`*^9, 3.687512172260191*^9}}],
+Cell[CellGroupData[{
 
-Cell["SMO", "Subsubsection",
- CellChangeTimes->{{3.687512189828202*^9, 3.6875121902520504`*^9}}],
+Cell["Karush\[Dash]Kuhn\[Dash]Tucker(KKT) conditions", "Subsubsection",
+ CellChangeTimes->{{3.6875121706197805`*^9, 3.687512172260191*^9}, {
+  3.6876429783633957`*^9, 3.6876429864498043`*^9}}],
+
+Cell["\<\
+In Mathematical optimization, the KKT conditions are first order necessary \
+conditions for a solution in nonlinear programming to be optimal, provided \
+that some regularity conditions are satisfied.\
+\>", "TextIndent",
+ CellChangeTimes->{{3.687643036290803*^9, 3.6876430992262745`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{"min", " ", 
+   RowBox[{"f", "(", "x", ")"}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"s", ".", "t", ".", "  ", 
+     RowBox[{
+      SubscriptBox["h", "j"], "(", "x", ")"}]}], "=", "0"}], ",", " ", 
+   RowBox[{"j", "=", "1"}], ",", "...", ",", 
+   RowBox[{"m", ";", "  ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["g", "k"], "(", "x", ")"}], "\[LessEqual]", "0"}]}], ",", 
+   " ", 
+   RowBox[{"k", "=", "1"}], ",", "...", ",", 
+   RowBox[{"l", ";", "   ", 
+    RowBox[{"x", " ", "\[Element]", " ", "X", " ", "\[Subset]", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}]}]}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876431420404887`*^9, 3.6876432358823395`*^9}, {
+  3.687645195844697*^9, 3.6876452020450063`*^9}}],
+
+Cell[TextData[{
+ "Suppose that the objective function ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", ":", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}], "\[Rule]", " ", 
+    "\[DoubleStruckCapitalR]"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and the constraint functions ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["g", "i"], ":", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}], "\[Rule]", " ", 
+    "\[DoubleStruckCapitalR]"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["h", "j"], ":", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}], "\[Rule]", " ", 
+    "\[DoubleStruckCapitalR]"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " are continuously differentiable at a point ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", "*"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". If ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", "*"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is a local optimum and the optimization problem satisfies some regularity \
+conditions, then there exist constants ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Mu]", "i"], "(", 
+    RowBox[{
+     RowBox[{"i", "=", "1"}], ",", "...", ",", "m"}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Lambda]", "j"], "(", 
+    RowBox[{
+     RowBox[{"j", "=", "1"}], ",", "...", ",", "l"}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " called KKT multipliers"
+}], "TextNoIndent",
+ CellChangeTimes->{{3.687644598772154*^9, 3.687644600107705*^9}, {
+  3.687644763972095*^9, 3.687644942774001*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Stationarity", "Subsubsubsection",
+ CellChangeTimes->{{3.6876449846523027`*^9, 3.6876449910127373`*^9}}],
+
+Cell[TextData[{
+ "For maximizing ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", "(", "x", ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ":"
+}], "TextIndent",
+ CellChangeTimes->{{3.6876450161726475`*^9, 3.687645029620267*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Del]", 
+    RowBox[{"f", "(", 
+     SuperscriptBox["x", "*"], ")"}]}], "=", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "m"], 
+     RowBox[{
+      SubscriptBox["\[Mu]", "i"], 
+      RowBox[{"\[Del]", 
+       RowBox[{
+        SubscriptBox["g", "i"], "(", 
+        SuperscriptBox["x", "*"], ")"}]}]}]}], "+", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"j", "=", "1"}]], "l"], 
+     RowBox[{
+      SubscriptBox["\[Lambda]", "j"], 
+      RowBox[{"\[Del]", 
+       RowBox[{
+        SubscriptBox["h", "j"], "(", 
+        SuperscriptBox["x", "*"], ")"}]}]}]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876446690534277`*^9, 3.6876447082923417`*^9}, 
+   3.687645045925972*^9, {3.6876451221483927`*^9, 3.687645161316521*^9}}],
+
+Cell[TextData[{
+ "For minimizing ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", "(", "x", ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ":"
+}], "TextIndent",
+ CellChangeTimes->{{3.6876450334844885`*^9, 3.6876450419003725`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"\[Del]", 
+     RowBox[{"f", "(", 
+      SuperscriptBox["x", "*"], ")"}]}]}], "=", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "m"], 
+     RowBox[{
+      SubscriptBox["\[Mu]", "i"], 
+      RowBox[{"\[Del]", 
+       RowBox[{
+        SubscriptBox["g", "i"], "(", 
+        SuperscriptBox["x", "*"], ")"}]}]}]}], "+", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"j", "=", "1"}]], "l"], 
+     RowBox[{
+      SubscriptBox["\[Lambda]", "j"], 
+      RowBox[{"\[Del]", 
+       RowBox[{
+        SubscriptBox["h", "j"], "(", 
+        SuperscriptBox["x", "*"], ")"}]}]}]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876451700693874`*^9, 3.6876451719570074`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Primal feasibility", "Subsubsubsection",
+ CellChangeTimes->{{3.6876450543246455`*^9, 3.687645063308667*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["g", "i"], "(", 
+     SuperscriptBox["x", "*"], ")"}], "\[LessEqual]", " ", "0"}], ",", " ", 
+   RowBox[{"i", "=", "1"}], ",", "...", ",", "m"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["h", "j"], "(", 
+     SuperscriptBox["x", "*"], ")"}], "=", "0"}], ",", " ", 
+   RowBox[{"j", "=", "1"}], ",", "...", ",", "l"}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{
+  3.6876450519007597`*^9, {3.6876452092209034`*^9, 3.687645236677293*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Dual feasibility", "Subsubsubsection",
+ CellChangeTimes->{{3.6876450749807034`*^9, 3.687645080836322*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["\[Mu]", "i"], "\[GreaterEqual]", " ", "0"}], ",", "  ", 
+   RowBox[{"i", "=", "1"}], ",", "...", ",", "m"}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876452399889536`*^9, 3.6876452487730813`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Complementary slackness", "Subsubsubsection",
+ CellChangeTimes->{{3.687645088612902*^9, 3.687645104348524*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Mu]", "i"], 
+     RowBox[{
+      SubscriptBox["g", "i"], "(", 
+      SuperscriptBox["x", "*"], ")"}]}], "=", "0"}], ",", "  ", 
+   RowBox[{"i", "=", "1"}], ",", "...", ",", "m"}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.68764525103712*^9, 3.687645263748146*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Duality (optimization)", "Subsubsection",
+ CellChangeTimes->{3.6876453593095784`*^9}],
+
+Cell["\<\
+Duality play an import role in optimization and formulation of SVM, \
+especially for kernel function.\
+\>", "TextIndent",
+ CellChangeTimes->{{3.6876475462240615`*^9, 3.687647568961355*^9}}],
+
+Cell["Lack of deep comprehension", "SmallText",
+ CellChangeTimes->{{3.687659429935049*^9, 3.6876594433206453`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Minimize L by \[Omega], b firstly", "Subsubsubsection",
+ CellChangeTimes->{3.6876453814618144`*^9}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[PartialD]", "L"}], 
+    RowBox[{"\[PartialD]", "\[Omega]"}]], "=", 
+   RowBox[{
+    RowBox[{"0", "\[Rule]", " ", "\[Omega]"}], "=", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["y", "i"], 
+      SubscriptBox["x", "i"]}]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[PartialD]", "L"}], 
+    RowBox[{"\[PartialD]", "b"}]], "=", 
+   RowBox[{
+    RowBox[{"0", "\[Rule]", " ", 
+     RowBox[{
+      OverscriptBox[
+       UnderscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}]], "n"], 
+      RowBox[{
+       SubscriptBox["\[Alpha]", "i"], 
+       SubscriptBox["y", "i"]}]}]}], "=", "0"}]}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687645393573451*^9, 3.6876454830382833`*^9}}],
+
+Cell[TextData[{
+ "Put them into ",
+ Cell[BoxData[
+  FormBox["L", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ":"
+}], "TextNoIndent",
+ CellChangeTimes->{{3.687645491446652*^9, 3.687645499316812*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"L", "(", 
+    RowBox[{"\[Omega]", ",", "b", ",", "\[Alpha]"}], ")"}], "=", 
+   RowBox[{
+    FractionBox["1", "2"], "||", "\[Omega]", 
+    SuperscriptBox["||", "2"], 
+    RowBox[{"-", 
+     RowBox[{
+      OverscriptBox[
+       UnderscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}]], "n"], 
+      RowBox[{
+       SubscriptBox["\[Alpha]", "i"], "(", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["y", "i"], "(", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["\[Omega]", "T"], 
+           SubscriptBox["x", "i"]}], "+", "b"}], ")"}], "-", "1"}], 
+       ")"}]}]}]}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{
+  3.687645406942088*^9, {3.687645547086808*^9, 3.687645649733588*^9}}],
+
+Cell["So we have:", "TextNoIndent",
+ CellChangeTimes->{{3.6876455034291325`*^9, 3.687645505252757*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{"L", "(", 
+    RowBox[{"\[Omega]", ",", "b", ",", "\[Alpha]"}], ")"}], "=", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "2"], 
+     RowBox[{
+      OverscriptBox[
+       UnderscriptBox["\[Sum]", 
+        RowBox[{"i", ",", 
+         RowBox[{"j", "=", "1"}]}]], "n"], 
+      RowBox[{
+       SubscriptBox["\[Alpha]", "i"], 
+       SubscriptBox["\[Alpha]", "j"], 
+       SubscriptBox["y", "i"], 
+       SubscriptBox["y", "j"], 
+       SubsuperscriptBox["x", "i", "T"], 
+       SubscriptBox["x", "j"]}]}]}], "-", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", ",", 
+        RowBox[{"j", "=", "1"}]}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["\[Alpha]", "j"], 
+      SubscriptBox["y", "i"], 
+      SubscriptBox["y", "j"], 
+      SubsuperscriptBox["x", "i", "T"], 
+      SubscriptBox["x", "i"]}]}], "-", 
+    RowBox[{"b", 
+     RowBox[{
+      OverscriptBox[
+       UnderscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}]], "n"], 
+      RowBox[{
+       SubscriptBox["\[Alpha]", "i"], 
+       SubscriptBox["y", "i"]}]}]}], "+", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     SubscriptBox["\[Alpha]", "i"]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{"=", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     SubscriptBox["\[Alpha]", "i"]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], 
+     RowBox[{
+      OverscriptBox[
+       UnderscriptBox["\[Sum]", 
+        RowBox[{"i", ",", 
+         RowBox[{"j", "=", "1"}]}]], "n"], 
+      RowBox[{
+       SubscriptBox["\[Alpha]", "i"], 
+       SubscriptBox["\[Alpha]", "j"], 
+       SubscriptBox["y", "i"], 
+       SubscriptBox["y", "j"], 
+       SubsuperscriptBox["x", "i", "T"], 
+       SubscriptBox["x", "j"]}]}]}]}]}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876456624611177`*^9, 3.6876457760549746`*^9}, 
+   3.6876588627344856`*^9}],
+
+Cell["Here, no more \[Omega] and b in formula, because:", "TextNoIndent",
+ CellChangeTimes->{{3.68764583783807*^9, 3.687645876317424*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Omega]", "=", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["y", "i"], 
+      SubscriptBox["x", "i"]}]}]}], " ", ";", "   ", 
+   RowBox[{
+    SuperscriptBox["b", "*"], "=", 
+    RowBox[{"-", 
+     FractionBox[
+      RowBox[{
+       RowBox[{
+        SubscriptBox["max", 
+         RowBox[{
+          RowBox[{"i", ":", 
+           SubscriptBox["y", "i"]}], "=", 
+          RowBox[{"-", "1"}]}]], 
+        SuperscriptBox["\[Omega]", 
+         RowBox[{"*", "T"}]], 
+        SubscriptBox["x", "i"]}], "+", 
+       RowBox[{
+        SubscriptBox["min", 
+         RowBox[{
+          RowBox[{"i", ":", 
+           SubscriptBox["y", "i"]}], "=", "1"}]], 
+        SuperscriptBox["\[Omega]", 
+         RowBox[{"*", "T"}]], 
+        SubscriptBox["x", "i"]}]}], "2"]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687645873301525*^9, 3.6876459317180014`*^9}}],
+
+Cell["The optimal problem has been converted into the form:", "TextNoIndent",
+ CellChangeTimes->{{3.68764596447759*^9, 3.687645976695229*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    UnderscriptBox["max", "\[Alpha]"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     SubscriptBox["\[Alpha]", "i"]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", ",", 
+        RowBox[{"j", "=", "1"}]}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["\[Alpha]", "j"], 
+      SubscriptBox["y", "i"], 
+      SubscriptBox["y", "j"], 
+      SubsuperscriptBox["x", "i", "T"], 
+      SubscriptBox["x", "j"]}]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"s", ".", "t", ".", " ", 
+     SubscriptBox["\[Alpha]", "i"]}], "\[GreaterEqual]", " ", "0"}], ",", " ", 
+   RowBox[{"i", "=", "1"}], ",", "...", ",", "n"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox[
+     UnderscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}]], "n"], 
+    RowBox[{
+     SubscriptBox["\[Alpha]", "i"], 
+     SubscriptBox["y", "i"]}]}], "=", "0"}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687645947077676*^9, 3.6876460015735855`*^9}, 
+   3.687658869046091*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sequential Minimal Optimization(SMO)", "Subsubsection",
+ CellChangeTimes->{{3.687512189828202*^9, 3.6875121902520504`*^9}, {
+  3.6876595574707236`*^9, 3.6876595711824923`*^9}}],
+
+Cell[BoxData[
+ FormBox["", TraditionalForm]], "DisplayFormulaNumbered"]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell["Linearly Un-Separable", "Subsubsection",
  CellChangeTimes->{{3.6875122229012327`*^9, 3.687512230357067*^9}}],
 
+Cell["Hyper-plane:", "TextNoIndent",
+ CellChangeTimes->{{3.6876463782953568`*^9, 3.6876463876223335`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"f", "(", "x", ")"}], "=", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["\[Omega]", "T"], "x"}], "+", "b"}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687646394347657*^9, 3.6876463995422034`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Omega]", "=", 
+   RowBox[{
+    OverscriptBox[
+     UnderscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}]], "n"], 
+    RowBox[{
+     SubscriptBox["\[Alpha]", "i"], 
+     SubscriptBox["y", "i"], 
+     SubscriptBox["x", "i"]}]}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687646405974185*^9, 3.687646413478592*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"f", "(", "x", ")"}], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        OverscriptBox[
+         UnderscriptBox["\[Sum]", 
+          RowBox[{"i", "=", "1"}]], "n"], 
+        RowBox[{
+         SubscriptBox["\[Alpha]", "i"], 
+         SubscriptBox["y", "i"], 
+         SubscriptBox["x", "i"]}]}], ")"}], "x"}], "+", "b"}], "=", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox[
+       UnderscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}]], "n"], 
+      RowBox[{
+       SubscriptBox["\[Alpha]", "i"], 
+       SubscriptBox["y", "i"], 
+       RowBox[{"\[LeftAngleBracket]", 
+        RowBox[{
+         SubscriptBox["x", "i"], ",", "x"}], "\[RightAngleBracket]"}]}]}], 
+     "+", "b"}]}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687646417367588*^9, 3.6876464487584405`*^9}}],
+
+Cell["\<\
+Only the coefficients \[Alpha] of supporting vector are valid (not zero) and \
+these supporting vectors contribute to the classification and regression. \
+Thus these algorithm is called supporting vector machine. Non-supporting \
+vectors make no or little influence on the hyper plane, which mainly decide \
+the effect and conclusion of classification. These non-supporting vectors \
+will not participate the calculation during classificating and we can ignore \
+them. (Same case in the physics, only the electrons surrounding the surface \
+of Fermi surface will contribute to the conductivity)\
+\>", "TextNoIndent",
+ CellChangeTimes->{{3.6876465674712906`*^9, 3.6876467997191257`*^9}, {
+  3.6876468596794195`*^9, 3.6876468629757166`*^9}, {3.687647835408625*^9, 
+  3.687647897296585*^9}}],
+
+Cell["For supporting vector:", "TextNoIndent",
+ CellChangeTimes->{{3.6876469221910486`*^9, 3.687646927423111*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["y", "i"], "(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["\[Omega]", "T"], 
+       SubscriptBox["x", "i"]}], "+", "b"}], ")"}], "-", "1"}], "=", "0"}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876469301270576`*^9, 3.687646941430871*^9}}],
+
+Cell["For non-supporting vector:", "TextNoIndent",
+ CellChangeTimes->{{3.6876469436803107`*^9, 3.6876469485028553`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["y", "i"], "(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["\[Omega]", "T"], 
+       SubscriptBox["x", "i"]}], "+", "b"}], ")"}], "-", "1"}], 
+   "\[GreaterEqual]", " ", "0"}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687646950415015*^9, 3.6876469649034863`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["Kernel", "Subsubsection",
  CellChangeTimes->{{3.687512196487638*^9, 3.6875122010358014`*^9}}],
 
+Cell["\<\
+For non-linear case, the solution of SVM is to choose a kernel function to \
+project data into higher-dimensional space to solve the linearly un-separable \
+problem in the original space. For example, a circle in 2D space can be \
+project into a plan in 3D plane.\
+\>", "TextIndent",
+ CellChangeTimes->{{3.687647206990965*^9, 3.6876472773273993`*^9}, {
+  3.687647599055701*^9, 3.6876476241200075`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"Input", " ", "space"}], " ", "\[Rule]", "  ", 
+   RowBox[{
+    RowBox[{"Feature", " ", "space"}], "\[Rule]", "  ", 
+    RowBox[{"Output", " ", 
+     RowBox[{"space", "(", 
+      RowBox[{"same", " ", "as", " ", "input", " ", "space"}], ")"}]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687647668705167*^9, 3.6876476944243107`*^9}, {
+  3.687648146050103*^9, 3.6876481525769157`*^9}}],
+
+Cell["Nonlinear SVM:", "TextNoIndent",
+ CellChangeTimes->{
+  3.6876480968673573`*^9, {3.6876481319521465`*^9, 3.687648139792487*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"f", "(", "x", ")"}], "=", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "N"], 
+     RowBox[{
+      SubscriptBox["\[Omega]", "i"], 
+      RowBox[{
+       SubscriptBox["\[Phi]", "i"], "(", "x", ")"}]}]}], "+", "b"}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876480784962683`*^9, 3.6876480929037633`*^9}, {
+  3.6876481562889256`*^9, 3.6876481626246023`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"f", "(", "x", ")"}], "=", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "N"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["y", "i"], 
+      RowBox[{"\[LeftAngleBracket]", 
+       RowBox[{
+        RowBox[{"\[Phi]", "(", 
+         SubscriptBox["x", "i"], ")"}], "\[CenterDot]", 
+        RowBox[{"\[Phi]", "(", "x", ")"}]}], "\[RightAngleBracket]"}]}]}], 
+    "+", "b"}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876482099044285`*^9, 3.687648249025073*^9}}],
+
+Cell[TextData[{
+ "Define kernel function ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"k", "(", 
+     RowBox[{"x", ",", "z"}], ")"}], "=", 
+    RowBox[{"\[LeftAngleBracket]", 
+     RowBox[{
+      RowBox[{"\[Phi]", "(", "x", ")"}], "\[CenterDot]", 
+      RowBox[{"\[Phi]", "(", "z", ")"}]}], "\[RightAngleBracket]"}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "TextIndent",
+ CellChangeTimes->{{3.687648254218244*^9, 3.687648283464511*^9}, {
+  3.6876483369855423`*^9, 3.6876483369855423`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Nonlinear Data", "Subsubsubsection",
+ CellChangeTimes->{{3.6876482954967303`*^9, 3.6876482984166207`*^9}}],
+
+Cell[TextData[{
+ "For space ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["X", "1"], ",", 
+     SubscriptBox["X", "2"]}], "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", the hyper plane:"
+}], "TextIndent",
+ CellChangeTimes->{{3.6876484441606174`*^9, 3.6876484727448444`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "1"], 
+     SubscriptBox["X", "1"]}], "+", 
+    RowBox[{
+     SubscriptBox["a", "2"], 
+     SubsuperscriptBox["X", "1", "2"]}], "+", 
+    RowBox[{
+     SubscriptBox["a", "3"], 
+     SubscriptBox["X", "2"]}], "+", 
+    RowBox[{
+     SubscriptBox["a", "4"], 
+     SubsuperscriptBox["X", "2", "2"]}], "+", 
+    RowBox[{
+     SubscriptBox["a", "5"], 
+     SubscriptBox["X", "1"], 
+     SubscriptBox["X", "2"]}], "+", 
+    SubscriptBox["a", "6"]}], "=", "0"}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687648436593099*^9, 3.687648505912747*^9}}],
+
+Cell[TextData[{
+ "For space ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["Z", "1"], "=", 
+      SubscriptBox["X", "1"]}], ",", 
+     RowBox[{
+      SubscriptBox["Z", "2"], "=", 
+      SubsuperscriptBox["X", "1", "2"]}], ",", 
+     RowBox[{
+      SubscriptBox["Z", "3"], "=", 
+      SubscriptBox["X", "2"]}], ",", 
+     RowBox[{
+      SubscriptBox["Z", "4"], "=", 
+      SubsuperscriptBox["X", "2", "2"]}], ",", 
+     RowBox[{
+      SubscriptBox["Z", "5"], "=", 
+      RowBox[{
+       SubscriptBox["X", "1"], 
+       SubscriptBox["X", "2"]}]}]}], "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", the converted hyper plane:"
+}], "TextIndent",
+ CellChangeTimes->{{3.687648507650777*^9, 3.6876485498492503`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "5"], 
+     RowBox[{
+      SubscriptBox["a", "i"], 
+      SubscriptBox["Z", "i"]}]}], "+", 
+    SubscriptBox["a", "6"]}], "=", "0"}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687648551585086*^9, 3.6876485708571315`*^9}}],
+
+Cell[TextData[{
+ "Through the projection ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Phi]", ":", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", "2"]}], "\[Rule]", 
+    SuperscriptBox["\[DoubleStruckCapitalR]", "5"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", the circle in space ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    SubscriptBox["X", "i"], "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " will transfer into the plane in space ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    SubscriptBox["Z", "i"], "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", the original data is linearly un-separable in space ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    SubscriptBox["X", "i"], "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " while is linearly separable in space ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    SubscriptBox["Z", "i"], "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "TextIndent",
+ CellChangeTimes->{{3.687648722642786*^9, 3.6876488474894915`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"f", "(", "x", ")"}], "=", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["y", "i"], 
+      RowBox[{"\[LeftAngleBracket]", 
+       RowBox[{
+        SubscriptBox["x", "i"], ",", "x"}], "\[RightAngleBracket]"}]}]}], "+",
+     "b"}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687656518492617*^9, 3.687656537555867*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"f", "(", "x", ")"}], "=", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "N"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["y", "i"], 
+      RowBox[{"\[LeftAngleBracket]", 
+       RowBox[{
+        RowBox[{"\[Phi]", "(", 
+         SubscriptBox["x", "i"], ")"}], "\[CenterDot]", 
+        RowBox[{"\[Phi]", "(", "x", ")"}]}], "\[RightAngleBracket]"}]}]}], 
+    "+", "b"}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876565423878317`*^9, 3.6876565463400145`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    UnderscriptBox["max", "\[Alpha]"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     SubscriptBox["\[Alpha]", "i"]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", ",", 
+        RowBox[{"j", "=", "1"}]}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["\[Alpha]", "j"], 
+      SubscriptBox["y", "i"], 
+      SubscriptBox["y", "j"], 
+      RowBox[{"\[LeftAngleBracket]", 
+       RowBox[{
+        RowBox[{"\[Phi]", "(", 
+         SubscriptBox["x", "i"], ")"}], "\[CenterDot]", 
+        RowBox[{"\[Phi]", "(", 
+         SubscriptBox["x", "j"], ")"}]}], "\[RightAngleBracket]"}]}]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"s", ".", "t", ".", " ", 
+     SubscriptBox["\[Alpha]", "i"]}], "\[GreaterEqual]", " ", "0"}], ",", " ", 
+   RowBox[{"i", "=", "1"}], ",", "...", ",", "n"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox[
+     UnderscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}]], "n"], 
+    RowBox[{
+     SubscriptBox["\[Alpha]", "i"], 
+     SubscriptBox["y", "i"]}]}], "=", "0"}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876565503307247`*^9, 3.687656584531201*^9}}],
+
+Cell["\<\
+Naive transformation is computationally expensive due to the explosive \
+increasement of dimensions.\
+\>", "TextNoIndent",
+ CellChangeTimes->{{3.687656613948557*^9, 3.6876566550751247`*^9}}],
+
+Cell[TextData[{
+ "For example, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "1"], "=", 
+    RowBox[{"(", GridBox[{
+       {
+        SubscriptBox["\[Eta]", "1"]},
+       {
+        SubscriptBox["\[Eta]", "2"]}
+      }], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "2"], "=", 
+    RowBox[{"(", GridBox[{
+       {
+        SubscriptBox["\[Xi]", "1"]},
+       {
+        SubscriptBox["\[Xi]", "2"]}
+      }], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", so"
+}], "TextIndent",
+ CellChangeTimes->{{3.6876569191634483`*^9, 3.687656990691516*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[LeftAngleBracket]", 
+    RowBox[{
+     RowBox[{"\[Phi]", "(", 
+      SubscriptBox["x", "1"], ")"}], ",", 
+     RowBox[{"\[Phi]", "(", 
+      SubscriptBox["x", "2"], ")"}]}], "\[RightAngleBracket]"}], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Eta]", "1"], 
+     SubscriptBox["\[Xi]", "1"]}], "+", 
+    RowBox[{
+     SubsuperscriptBox["\[Eta]", "1", "2"], 
+     SubsuperscriptBox["\[Xi]", "1", "2"]}], "+", 
+    RowBox[{
+     SubscriptBox["\[Eta]", "2"], 
+     SubscriptBox["\[Xi]", "2"]}], "+", 
+    RowBox[{
+     SubsuperscriptBox["\[Eta]", "2", "2"], 
+     SubsuperscriptBox["\[Xi]", "2", "2"]}], "+", 
+    RowBox[{
+     SubscriptBox["\[Eta]", "1"], 
+     SubscriptBox["\[Eta]", "2"], 
+     SubscriptBox["\[Xi]", "1"], 
+     SubscriptBox["\[Xi]", "2"]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876569922594786`*^9, 3.687657056171536*^9}}],
+
+Cell["But reminding that:", "TextIndent",
+ CellChangeTimes->{{3.687657060413355*^9, 3.687657065315999*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"\[LeftAngleBracket]", 
+       RowBox[{
+        SubscriptBox["x", "1"], ",", 
+        SubscriptBox["x", "2"]}], "\[RightAngleBracket]"}], "+", "1"}], ")"}],
+     "2"], "=", 
+   RowBox[{
+    RowBox[{"2", 
+     SubscriptBox["\[Eta]", "1"], 
+     SubscriptBox["\[Xi]", "1"]}], "+", 
+    RowBox[{
+     SubsuperscriptBox["\[Eta]", "1", "2"], 
+     SubsuperscriptBox["\[Xi]", "1", "2"]}], "+", 
+    RowBox[{"2", 
+     SubscriptBox["\[Eta]", "2"], 
+     SubscriptBox["\[Xi]", "2"]}], "+", 
+    RowBox[{
+     SubsuperscriptBox["\[Eta]", "2", "2"], 
+     SubsuperscriptBox["\[Xi]", "2", "2"]}], "+", 
+    RowBox[{
+     SubscriptBox["\[Eta]", "1"], 
+     SubscriptBox["\[Eta]", "2"], 
+     SubscriptBox["\[Xi]", "1"], 
+     SubscriptBox["\[Xi]", "2"]}], "+", "1"}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687657069907715*^9, 3.68765712342945*^9}}],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[LeftAngleBracket]", 
+    RowBox[{
+     RowBox[{"\[Phi]", "(", 
+      SubscriptBox["x", "1"], ")"}], ",", 
+     RowBox[{"\[Phi]", "(", 
+      SubscriptBox["x", "2"], ")"}]}], "\[RightAngleBracket]"}], 
+   TraditionalForm]],
+  CellChangeTimes->{{3.6876569922594786`*^9, 3.687657056171536*^9}}],
+ " means the computations happen in high-dimensional space, while ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"\[LeftAngleBracket]", 
+       RowBox[{
+        SubscriptBox["x", "1"], ",", 
+        SubscriptBox["x", "2"]}], "\[RightAngleBracket]"}], "+", "1"}], ")"}],
+     "2"], TraditionalForm]],
+  CellChangeTimes->{{3.687657069907715*^9, 3.68765712342945*^9}}],
+ " means that they still happen in original space. So by achieving coordinate \
+transformation implicitly, we define the inner product function in this case \
+as Kernel function, i.e., ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Kappa]", "(", 
+     RowBox[{
+      SubscriptBox["x", "1"], ",", 
+      SubscriptBox["x", "2"]}], ")"}], "=", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"\[LeftAngleBracket]", 
+        RowBox[{
+         SubscriptBox["x", "1"], ",", 
+         SubscriptBox["x", "2"]}], "\[RightAngleBracket]"}], "+", "1"}], 
+      ")"}], "2"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "TextNoIndent",
+ CellChangeTimes->{{3.687657167518518*^9, 3.687657325917323*^9}, {
+  3.6876575617330685`*^9, 3.687657584420641*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"f", "(", "x", ")"}], "=", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["y", "i"], 
+      RowBox[{"\[Kappa]", "(", 
+       RowBox[{
+        SubscriptBox["x", "i"], ",", "x"}], ")"}]}]}], "+", "b"}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687657633260994*^9, 3.6876576507890773`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    UnderscriptBox["max", "\[Alpha]"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     SubscriptBox["\[Alpha]", "i"]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", ",", 
+        RowBox[{"j", "=", "1"}]}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["\[Alpha]", "j"], 
+      SubscriptBox["y", "i"], 
+      SubscriptBox["y", "j"], 
+      RowBox[{"\[Kappa]", "(", 
+       RowBox[{
+        SubscriptBox["x", "i"], ",", 
+        SubscriptBox["x", "j"]}], ")"}]}]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"s", ".", "t", ".", " ", 
+     SubscriptBox["\[Alpha]", "i"]}], "\[GreaterEqual]", " ", "0"}], ",", " ", 
+   RowBox[{"i", "=", "1"}], ",", "...", ",", "n"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox[
+     UnderscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}]], "n"], 
+    RowBox[{
+     SubscriptBox["\[Alpha]", "i"], 
+     SubscriptBox["y", "i"]}]}], "=", "0"}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687657731007187*^9, 3.6876577467735524`*^9}}],
+
+Cell["\<\
+Using kernel function can avoid the expensive computation in high-dimensional \
+space.\
+\>", "TextNoIndent",
+ CellChangeTimes->{{3.687657873421914*^9, 3.687657907092621*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Classical Kernels", "Subsubsubsection",
+ CellChangeTimes->{{3.6876579363087273`*^9, 3.6876579417331505`*^9}}],
+
+Cell["Gaussian Kernels", "TextIndent",
+ CellChangeTimes->{{3.687657946476467*^9, 3.687657976140733*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Kappa]", "(", 
+    RowBox[{
+     SubscriptBox["x", "1"], ",", 
+     SubscriptBox["x", "2"]}], ")"}], "=", 
+   SuperscriptBox["e", 
+    RowBox[{"-", 
+     FractionBox[
+      RowBox[{"||", 
+       RowBox[{
+        SubscriptBox["x", "1"], "-", 
+        SubscriptBox["x", "2"]}], 
+       SuperscriptBox["||", "2"]}], 
+      RowBox[{"2", 
+       SuperscriptBox["\[Sigma]", "2"]}]]}]]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687657979308732*^9, 3.687658005581768*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["Outliers", "Subsubsection",
- CellChangeTimes->{{3.687512278147257*^9, 3.687512279931506*^9}}]
+ CellChangeTimes->{{3.687512278147257*^9, 3.687512279931506*^9}}],
+
+Cell["\<\
+Although the nonlinear cases in the original space may be linearly separated \
+in higher-dimensional space, some cases are still hard to deal with. The \
+reasones behind these may be the noises among the data.\
+\>", "TextIndent",
+ CellChangeTimes->{{3.6876581144050426`*^9, 3.6876582281972227`*^9}}],
+
+Cell["\<\
+The existence of noises may cause the distortion of hyper plane. To avoid \
+this situation, we can the some position bias in some degree.\
+\>", "TextIndent",
+ CellChangeTimes->{{3.6876583201328025`*^9, 3.687658441197577*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["y", "i"], "(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["\[Omega]", "T"], 
+       SubscriptBox["x", "i"]}], "+", "b"}], ")"}], "\[GreaterEqual]", " ", 
+    RowBox[{"1", "-", 
+     SubscriptBox["\[Xi]", "i"]}]}], ",", " ", 
+   RowBox[{"i", " ", "=", "1"}], ",", "...", ",", "n"}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687658454581873*^9, 3.6876584698215656`*^9}}],
+
+Cell[TextData[{
+ "where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Xi]", "i"], "\[GreaterEqual]", " ", "0"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is called as slack variable."
+}], "TextNoIndent",
+ CellChangeTimes->{{3.6876584758298726`*^9, 3.6876585018858304`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{"min", " ", 
+    FractionBox["1", "2"]}], "||", "\[Omega]", 
+   SuperscriptBox["||", "2"], 
+   RowBox[{
+    RowBox[{"+", "C"}], " ", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     SubscriptBox["\[Xi]", "i"]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"s", ".", "t", "."}], ",", " ", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["y", "i"], "(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["\[Omega]", "T"], 
+       SubscriptBox["x", "i"]}], "+", "b"}], ")"}], "\[GreaterEqual]", " ", 
+    RowBox[{"1", "-", 
+     SubscriptBox["\[Xi]", "i"]}]}], ",", " ", 
+   RowBox[{"i", " ", "=", "1"}], ",", "...", ",", "n"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["\[Xi]", "i"], "\[GreaterEqual]", " ", "0"}], ",", " ", 
+   RowBox[{"i", " ", "=", "1"}], ",", "...", ",", "n"}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687658531677268*^9, 3.687658580070069*^9}}],
+
+Cell["The larange function with considering outliers:", "TextNoIndent",
+ CellChangeTimes->{{3.6876585923835497`*^9, 3.6876586137979393`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"L", "(", 
+    RowBox[{"\[Omega]", ",", "b", ",", "\[Xi]", ",", "\[Alpha]", ",", "r"}], 
+    ")"}], "=", 
+   RowBox[{
+    FractionBox["1", "2"], "||", "\[Omega]", 
+    SuperscriptBox["||", "2"], 
+    RowBox[{
+     RowBox[{
+      RowBox[{"+", "C"}], " ", 
+      RowBox[{
+       OverscriptBox[
+        UnderscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "1"}]], "n"], 
+       SubscriptBox["\[Xi]", "i"]}]}], "-", 
+     RowBox[{
+      OverscriptBox[
+       UnderscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}]], "n"], 
+      RowBox[{
+       SubscriptBox["\[Alpha]", "i"], "(", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["y", "i"], "(", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["\[Omega]", "T"], 
+           SubscriptBox["x", "i"]}], "+", "b"}], ")"}], "-", "1", "+", 
+        SubscriptBox["\[Xi]", "i"]}], ")"}]}], "-", 
+     RowBox[{
+      OverscriptBox[
+       UnderscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}]], "n"], 
+      RowBox[{
+       SubscriptBox["r", "i"], 
+       SubscriptBox["\[Xi]", "i"]}]}]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876586227501583`*^9, 3.6876587129180946`*^9}}],
+
+Cell["Similarily as above, we have", "TextNoIndent",
+ CellChangeTimes->{{3.687658729871791*^9, 3.6876587441578493`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[PartialD]", "L"}], 
+    RowBox[{"\[PartialD]", "\[Omega]"}]], "=", 
+   RowBox[{
+    RowBox[{"0", "\[Rule]", " ", "\[Omega]"}], "=", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["y", "i"], 
+      SubscriptBox["x", "i"]}]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[PartialD]", "L"}], 
+    RowBox[{"\[PartialD]", "b"}]], "=", 
+   RowBox[{
+    RowBox[{"0", "\[Rule]", " ", 
+     RowBox[{
+      OverscriptBox[
+       UnderscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}]], "n"], 
+      RowBox[{
+       SubscriptBox["\[Alpha]", "i"], 
+       SubscriptBox["y", "i"]}]}]}], "=", "0"}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox[
+     RowBox[{"\[PartialD]", "L"}], 
+     RowBox[{"\[PartialD]", 
+      SubscriptBox["\[Xi]", "i"]}]], "=", 
+    RowBox[{
+     RowBox[{"0", "\[Rule]", " ", 
+      RowBox[{"C", "-", 
+       SubscriptBox["\[Alpha]", "i"], "-", 
+       SubscriptBox["r", "i"]}]}], "=", "0"}]}], ",", " ", 
+   RowBox[{"i", "=", "1"}], ",", "...", ",", "n"}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687658746342431*^9, 3.68765879601449*^9}}],
+
+Cell["Thus,", "TextNoIndent",
+ CellChangeTimes->{{3.6876588037816095`*^9, 3.6876588122704883`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    UnderscriptBox["max", "\[Alpha]"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     SubscriptBox["\[Alpha]", "i"]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", ",", 
+        RowBox[{"j", "=", "1"}]}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["\[Alpha]", "j"], 
+      SubscriptBox["y", "i"], 
+      SubscriptBox["y", "j"], 
+      RowBox[{"\[LeftAngleBracket]", 
+       RowBox[{
+        SubscriptBox["x", "i"], ",", 
+        SubscriptBox["x", "j"]}], "\[RightAngleBracket]"}]}]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"s", ".", "t", "."}], ",", " ", 
+   RowBox[{"0", "\[LessEqual]", 
+    SubscriptBox["\[Alpha]", "i"], "\[LessEqual]", "C"}], ",", " ", 
+   RowBox[{"i", "=", "1"}], ",", "...", ",", "n"}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{" ", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["y", "i"]}]}], "=", "0"}]}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.687658800965661*^9, 3.687658913983391*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsubsection",
+ CellChangeTimes->{{3.687658993494335*^9, 3.687658996798421*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Primal Formulation", "Subsubsubsection",
+ CellChangeTimes->{{3.6876590082945476`*^9, 3.6876590438384423`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{"max", " ", 
+    FractionBox["1", "2"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     SubsuperscriptBox["\[Omega]", "i", "2"]}]}], "+", 
+   RowBox[{"C", " ", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "N"], 
+     SubscriptBox["\[Xi]", "i"]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"s", ".", "t", ".", " ", 
+     RowBox[{
+      SubscriptBox["y", "i"], "(", 
+      RowBox[{
+       RowBox[{
+        SuperscriptBox["\[Omega]", "T"], 
+        SubscriptBox["x", "i"]}], "+", "b"}], ")"}]}], "\[GreaterEqual]", " ", 
+    RowBox[{"1", "-", 
+     SubscriptBox["\[Xi]", "i"]}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"for", " ", "i"}], " ", "=", " ", "1"}], ",", "...", ",", "N"}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876590166870174`*^9, 3.6876591378869686`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Dual Formulation", "Subsubsubsection",
+ CellChangeTimes->{{3.687659143990608*^9, 3.6876591496558266`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{"max", " ", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     SubscriptBox["\[Alpha]", "i"]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", ",", 
+        RowBox[{"j", "=", "1"}]}]], "N"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["\[Alpha]", "j"], 
+      SubscriptBox["y", "i"], 
+      SubscriptBox["y", "j"], 
+      RowBox[{"\[LeftAngleBracket]", 
+       RowBox[{
+        SubscriptBox["x", "i"], ",", 
+        SubscriptBox["x", "j"]}], "\[RightAngleBracket]"}]}]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"s", ".", "t", "."}], ",", " ", 
+   RowBox[{
+    RowBox[{"0", "\[LessEqual]", 
+     SubscriptBox["\[Alpha]", "i"], "\[LessEqual]", " ", 
+     RowBox[{"C", "  ", "for", " ", "i"}]}], "=", "1"}], ",", "...", ",", 
+   "N"}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{" ", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "N"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["y", "i"]}]}], "=", "0"}]}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6876591538220882`*^9, 3.6876592215190196`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Kernel Formulation", "Subsubsubsection",
+ CellChangeTimes->{{3.6876592671664534`*^9, 3.6876592723434744`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{"max", " ", 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "n"], 
+     SubscriptBox["\[Alpha]", "i"]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], 
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", ",", 
+        RowBox[{"j", "=", "1"}]}]], "N"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["\[Alpha]", "j"], 
+      SubscriptBox["y", "i"], 
+      SubscriptBox["y", "j"], 
+      RowBox[{"\[Kappa]", "(", 
+       RowBox[{
+        SubscriptBox["x", "i"], ",", 
+        SubscriptBox["x", "j"]}], ")"}]}]}]}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{"s", ".", "t", "."}], ",", " ", 
+   RowBox[{
+    RowBox[{"0", "\[LessEqual]", 
+     SubscriptBox["\[Alpha]", "i"], "\[LessEqual]", " ", 
+     RowBox[{"C", "  ", "for", " ", "i"}]}], "=", "1"}], ",", "...", ",", 
+   "N"}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{" ", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      UnderscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}]], "N"], 
+     RowBox[{
+      SubscriptBox["\[Alpha]", "i"], 
+      SubscriptBox["y", "i"]}]}], "=", "0"}]}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{
+  3.687659276951393*^9, {3.6876593284798145`*^9, 3.6876593310705767`*^9}}]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 },
 WindowSize->{798, 808},
 WindowMargins->{{Automatic, -7}, {Automatic, 0}},
-Magnification:>1.4 Inherited,
+Magnification:>1.5 Inherited,
 FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (2015\:5e747\:67087\
 \:65e5)",
 StyleDefinitions->"Cambria Article.nb"
@@ -839,72 +2362,189 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 109, 1, 115, "Title"],
-Cell[692, 25, 93, 1, 81, "Author"],
+Cell[580, 22, 109, 1, 123, "Title"],
+Cell[692, 25, 93, 1, 86, "Author"],
 Cell[CellGroupData[{
-Cell[810, 30, 162, 2, 43, "Subsubsection"],
-Cell[975, 34, 288, 8, 70, "DisplayFormulaNumbered"],
+Cell[810, 30, 162, 2, 47, "Subsubsection"],
+Cell[975, 34, 288, 8, 66, "DisplayFormulaNumbered"],
 Cell[CellGroupData[{
-Cell[1288, 46, 426, 12, 70, "Input"],
-Cell[1717, 60, 5236, 98, 339, "Output"]
+Cell[1288, 46, 426, 12, 73, "Input"],
+Cell[1717, 60, 5236, 98, 363, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7002, 164, 113, 1, 43, "Subsubsection"],
-Cell[7118, 167, 498, 16, 77, "DisplayFormulaNumbered"],
-Cell[7619, 185, 624, 20, 77, "DisplayFormulaNumbered"],
+Cell[7002, 164, 113, 1, 47, "Subsubsection"],
+Cell[7118, 167, 498, 16, 74, "DisplayFormulaNumbered"],
+Cell[7619, 185, 624, 20, 83, "DisplayFormulaNumbered"],
 Cell[CellGroupData[{
-Cell[8268, 209, 621, 19, 109, "Input"],
-Cell[8892, 230, 9623, 171, 339, "Output"]
+Cell[8268, 209, 621, 19, 112, "Input"],
+Cell[8892, 230, 9623, 171, 363, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18564, 407, 101, 1, 43, "Subsubsection"],
-Cell[18668, 410, 372, 13, 35, "TextIndent"],
+Cell[18564, 407, 101, 1, 47, "Subsubsection"],
+Cell[18668, 410, 372, 13, 38, "TextIndent"],
 Cell[CellGroupData[{
-Cell[19065, 427, 110, 1, 41, "Subsubsubsection"],
-Cell[19178, 430, 497, 14, 46, "DisplayFormulaNumbered"],
-Cell[19678, 446, 487, 13, 44, "DisplayFormulaNumbered"]
+Cell[19065, 427, 110, 1, 44, "Subsubsubsection"],
+Cell[19178, 430, 497, 14, 50, "DisplayFormulaNumbered"],
+Cell[19678, 446, 487, 13, 46, "DisplayFormulaNumbered"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20202, 464, 113, 1, 41, "Subsubsubsection"],
-Cell[20318, 467, 341, 9, 35, "TextIndent"],
-Cell[20662, 478, 436, 11, 69, "DisplayFormulaNumbered"],
-Cell[21101, 491, 334, 12, 35, "TextIndent"],
-Cell[21438, 505, 1153, 32, 109, "DisplayFormulaNumbered"],
-Cell[22594, 539, 428, 13, 78, "DisplayFormulaNumbered"],
-Cell[23025, 554, 115, 1, 28, "TextNoIndent"],
-Cell[23143, 557, 545, 17, 78, "DisplayFormulaNumbered"]
+Cell[20202, 464, 113, 1, 44, "Subsubsubsection"],
+Cell[20318, 467, 341, 9, 38, "TextIndent"],
+Cell[20662, 478, 436, 11, 66, "DisplayFormulaNumbered"],
+Cell[21101, 491, 334, 12, 38, "TextIndent"],
+Cell[21438, 505, 1153, 32, 133, "DisplayFormulaNumbered"],
+Cell[22594, 539, 428, 13, 74, "DisplayFormulaNumbered"],
+Cell[23025, 554, 115, 1, 31, "TextNoIndent"],
+Cell[23143, 557, 545, 17, 74, "DisplayFormulaNumbered"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23737, 580, 120, 1, 43, "Subsubsection"],
-Cell[23860, 583, 201, 5, 42, "DisplayFormulaNumbered"],
-Cell[24064, 590, 541, 16, 46, "DisplayFormulaNumbered"],
-Cell[24608, 608, 393, 11, 63, "TextIndent"],
-Cell[25004, 621, 571, 17, 73, "DisplayFormulaNumbered"]
+Cell[23737, 580, 120, 1, 47, "Subsubsection"],
+Cell[23860, 583, 201, 5, 46, "DisplayFormulaNumbered"],
+Cell[24064, 590, 541, 16, 50, "DisplayFormulaNumbered"],
+Cell[24608, 608, 393, 11, 68, "TextIndent"],
+Cell[25004, 621, 571, 17, 70, "DisplayFormulaNumbered"],
+Cell[25578, 640, 186, 2, 21, "SmallText"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25612, 643, 110, 1, 43, "Subsubsection"],
-Cell[25725, 646, 107, 1, 35, "TextIndent"],
-Cell[25835, 649, 577, 17, 73, "DisplayFormulaNumbered"],
-Cell[26415, 668, 608, 18, 70, "DisplayFormulaNumbered"],
-Cell[27026, 688, 375, 11, 74, "TextIndent"]
+Cell[25801, 647, 110, 1, 47, "Subsubsection"],
+Cell[25914, 650, 107, 1, 38, "TextIndent"],
+Cell[26024, 653, 577, 17, 70, "DisplayFormulaNumbered"],
+Cell[26604, 672, 608, 18, 66, "DisplayFormulaNumbered"],
+Cell[27215, 692, 375, 11, 75, "TextIndent"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27438, 704, 112, 1, 43, "Subsubsection"],
-Cell[27553, 707, 758, 23, 81, "DisplayFormulaNumbered"],
-Cell[28314, 732, 419, 11, 59, "DisplayFormulaNumbered"],
-Cell[28736, 745, 626, 17, 59, "DisplayFormulaNumbered"],
-Cell[29365, 764, 495, 13, 59, "DisplayFormulaNumbered"],
-Cell[29863, 779, 229, 5, 42, "DisplayFormulaNumbered"],
-Cell[30095, 786, 577, 17, 68, "TextIndent"]
+Cell[27627, 708, 112, 1, 47, "Subsubsection"],
+Cell[27742, 711, 758, 23, 87, "DisplayFormulaNumbered"],
+Cell[28503, 736, 419, 11, 63, "DisplayFormulaNumbered"],
+Cell[28925, 749, 626, 17, 63, "DisplayFormulaNumbered"],
+Cell[29554, 768, 495, 13, 63, "DisplayFormulaNumbered"],
+Cell[30052, 783, 229, 5, 46, "DisplayFormulaNumbered"],
+Cell[30284, 790, 544, 16, 73, "TextIndent"]
 }, Open  ]],
-Cell[30687, 806, 96, 1, 43, "Subsubsection"],
-Cell[30786, 809, 96, 1, 33, "Subsubsection"],
-Cell[30885, 812, 114, 1, 33, "Subsubsection"],
-Cell[31002, 815, 99, 1, 33, "Subsubsection"],
-Cell[31104, 818, 99, 1, 33, "Subsubsection"]
+Cell[CellGroupData[{
+Cell[30865, 811, 192, 2, 47, "Subsubsection"],
+Cell[31060, 815, 298, 5, 97, "TextIndent"],
+Cell[31361, 822, 839, 22, 113, "DisplayFormulaNumbered"],
+Cell[32203, 846, 1786, 57, 155, "TextNoIndent"],
+Cell[CellGroupData[{
+Cell[34014, 907, 110, 1, 44, "Subsubsubsection"],
+Cell[34127, 910, 238, 8, 38, "TextIndent"],
+Cell[34368, 920, 903, 29, 93, "DisplayFormulaNumbered"],
+Cell[35274, 951, 240, 8, 38, "TextIndent"],
+Cell[35517, 961, 851, 29, 93, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36405, 995, 114, 1, 44, "Subsubsubsection"],
+Cell[36522, 998, 607, 18, 81, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37166, 1021, 112, 1, 44, "Subsubsubsection"],
+Cell[37281, 1024, 291, 7, 46, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37609, 1036, 117, 1, 44, "Subsubsubsection"],
+Cell[37729, 1039, 373, 11, 46, "DisplayFormulaNumbered"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38151, 1056, 91, 1, 47, "Subsubsection"],
+Cell[38245, 1059, 199, 4, 68, "TextIndent"],
+Cell[38447, 1065, 115, 1, 21, "SmallText"],
+Cell[CellGroupData[{
+Cell[38587, 1070, 105, 1, 44, "Subsubsubsection"],
+Cell[38695, 1073, 957, 31, 167, "DisplayFormulaNumbered"],
+Cell[39655, 1106, 208, 7, 31, "TextNoIndent"],
+Cell[39866, 1115, 779, 24, 87, "DisplayFormulaNumbered"],
+Cell[40648, 1141, 103, 1, 31, "TextNoIndent"],
+Cell[40754, 1144, 2096, 70, 258, "DisplayFormulaNumbered"],
+Cell[42853, 1216, 138, 1, 31, "TextNoIndent"],
+Cell[42994, 1219, 1054, 35, 153, "DisplayFormulaNumbered"],
+Cell[44051, 1256, 142, 1, 31, "TextNoIndent"],
+Cell[44196, 1259, 1293, 42, 203, "DisplayFormulaNumbered"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45538, 1307, 182, 2, 47, "Subsubsection"],
+Cell[45723, 1311, 71, 1, 46, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45831, 1317, 114, 1, 47, "Subsubsection"],
+Cell[45948, 1320, 106, 1, 31, "TextNoIndent"],
+Cell[46057, 1323, 273, 8, 46, "DisplayFormulaNumbered"],
+Cell[46333, 1333, 378, 11, 87, "DisplayFormulaNumbered"],
+Cell[46714, 1346, 884, 28, 87, "DisplayFormulaNumbered"],
+Cell[47601, 1376, 798, 12, 267, "TextNoIndent"],
+Cell[48402, 1390, 114, 1, 31, "TextNoIndent"],
+Cell[48519, 1393, 356, 11, 50, "DisplayFormulaNumbered"],
+Cell[48878, 1406, 120, 1, 31, "TextNoIndent"],
+Cell[49001, 1409, 376, 11, 50, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49414, 1425, 99, 1, 47, "Subsubsection"],
+Cell[49516, 1428, 412, 7, 127, "TextIndent"],
+Cell[49931, 1437, 461, 11, 79, "DisplayFormulaNumbered"],
+Cell[50395, 1450, 133, 2, 31, "TextNoIndent"],
+Cell[50531, 1454, 499, 15, 90, "DisplayFormulaNumbered"],
+Cell[51033, 1471, 623, 18, 90, "DisplayFormulaNumbered"],
+Cell[51659, 1491, 519, 15, 38, "TextIndent"],
+Cell[CellGroupData[{
+Cell[52203, 1510, 112, 1, 44, "Subsubsubsection"],
+Cell[52318, 1513, 322, 11, 38, "TextIndent"],
+Cell[52643, 1526, 652, 22, 48, "DisplayFormulaNumbered"],
+Cell[53298, 1550, 770, 26, 70, "TextIndent"],
+Cell[54071, 1578, 394, 13, 91, "DisplayFormulaNumbered"],
+Cell[54468, 1593, 1071, 35, 97, "TextIndent"],
+Cell[55542, 1630, 531, 16, 87, "DisplayFormulaNumbered"],
+Cell[56076, 1648, 625, 18, 90, "DisplayFormulaNumbered"],
+Cell[56704, 1668, 1442, 46, 203, "DisplayFormulaNumbered"],
+Cell[58149, 1716, 200, 4, 61, "TextNoIndent"],
+Cell[58352, 1722, 660, 27, 61, "TextIndent"],
+Cell[59015, 1751, 934, 28, 48, "DisplayFormulaNumbered"],
+Cell[59952, 1781, 107, 1, 38, "TextIndent"],
+Cell[60062, 1784, 970, 30, 80, "DisplayFormulaNumbered"],
+Cell[61035, 1816, 1552, 45, 149, "TextNoIndent"],
+Cell[62590, 1863, 506, 16, 87, "DisplayFormulaNumbered"],
+Cell[63099, 1881, 1326, 44, 203, "DisplayFormulaNumbered"],
+Cell[64428, 1927, 184, 4, 61, "TextNoIndent"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[64649, 1936, 115, 1, 44, "Subsubsubsection"],
+Cell[64767, 1939, 104, 1, 38, "TextIndent"],
+Cell[64874, 1942, 544, 18, 71, "DisplayFormulaNumbered"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[65467, 1966, 99, 1, 47, "Subsubsection"],
+Cell[65569, 1969, 309, 5, 97, "TextIndent"],
+Cell[65881, 1976, 235, 4, 68, "TextIndent"],
+Cell[66119, 1982, 485, 14, 50, "DisplayFormulaNumbered"],
+Cell[66607, 1998, 307, 10, 31, "TextNoIndent"],
+Cell[66917, 2010, 1093, 34, 159, "DisplayFormulaNumbered"],
+Cell[68013, 2046, 141, 1, 31, "TextNoIndent"],
+Cell[68157, 2049, 1224, 39, 123, "DisplayFormulaNumbered"],
+Cell[69384, 2090, 120, 1, 31, "TextNoIndent"],
+Cell[69507, 2093, 1386, 45, 229, "DisplayFormulaNumbered"],
+Cell[70896, 2140, 99, 1, 31, "TextNoIndent"],
+Cell[70998, 2143, 1391, 45, 203, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[72426, 2193, 98, 1, 47, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[72549, 2198, 116, 1, 44, "Subsubsubsection"],
+Cell[72668, 2201, 1012, 32, 130, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[73717, 2238, 112, 1, 44, "Subsubsubsection"],
+Cell[73832, 2241, 1399, 45, 209, "DisplayFormulaNumbered"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[75268, 2291, 116, 1, 44, "Subsubsubsection"],
+Cell[75387, 2294, 1399, 46, 209, "DisplayFormulaNumbered"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 }
 ]
