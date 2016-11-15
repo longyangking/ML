@@ -1,0 +1,769 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     26011,        760]
+NotebookOptionsPosition[     24072,        698]
+NotebookOutlinePosition[     24464,        715]
+CellTagsIndexPosition[     24421,        712]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Markov Networks", "Title",
+ CellChangeTimes->{3.68816318802728*^9, 3.688163629360145*^9}],
+
+Cell["Yang Long", "Author",
+ CellChangeTimes->{{3.688163191931023*^9, 3.688163193210943*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Pairwise Markov Networks", "Subsubsection",
+ CellChangeTimes->{{3.6881631946759624`*^9, 3.6881632159942627`*^9}, 
+   3.6881636250021935`*^9}],
+
+Cell[TextData[{
+ "A pairwise Markov network is an undirected graph whose nodes are ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["X", "1"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",..., ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["X", "n"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and each edge ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["X", "i"], "-", 
+    SubscriptBox["X", "j"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is associated with a factor(potential) ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Phi]", "ij"], "(", 
+    RowBox[{
+     SubscriptBox["X", "i"], "-", 
+     SubscriptBox["X", "j"]}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "TextIndent",
+ CellChangeTimes->{{3.6881632183563695`*^9, 3.688163296266266*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"1", "\[Rule]", "2"}], ",", 
+     RowBox[{"2", "\[Rule]", "1"}], ",", 
+     RowBox[{"3", "\[Rule]", "1"}], ",", 
+     RowBox[{"3", "\[Rule]", "2"}], ",", 
+     RowBox[{"4", "\[Rule]", "1"}], ",", 
+     RowBox[{"4", "\[Rule]", "2"}], ",", 
+     RowBox[{"4", "\[Rule]", "4"}]}], "}"}], ",", 
+   RowBox[{"VertexLabeling", "\[Rule]", "True"}], ",", 
+   RowBox[{"DirectedEdges", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6881633150980854`*^9, 3.6881633552853413`*^9}, {
+  3.6881634448255663`*^9, 3.6881634530743885`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[GraphicsComplexBox[CompressedData["
+1:eJxdkXtMkwcUxUtdtrpVoDyHQBQmhW0wJYxncafMgmUwQJJlyASxiIYZwAUz
+Cwiuk8XHYGTaKKKIhlVYBgPCKBQ00sBaoOHdtXRFeVZa+doPHR1Doezbv7vJ
+zf3jJvee8zs+goLUHDqNRuNQ/d+ccHQWD8yZccT8vG14Yhmc9eLFTxbNoP2v
+6EfP2Yq1eoy1MIf65jYxnHg1eVynx2c7xL15Ny34rTfGN9VqhPBwdOm7Sgti
++/1nnPYZsbE0Eb1mtoCMezSblruExsGX6qEdJLIUHWcE954iQ56aUMMm8a2H
+OSF/yoA9HtenMiJIZD+dPNFjb0AEwVx2OEBC5C+xu8xbxJe+CQHNcSTkz8Xf
+uBUv4Nj5GNdfD5Jo9AvVWdrGUGYO+SKUR2IuUbeLFTWCu3ElvQ2RJEY3X86C
+pcIduYuYEUCiR/f65ZPPlIj6IeVIhgOJd8JNzO8U/WDnuf3RTFqw7m0tFN+X
+Y9UqNG8btOB0uJzl4/4QVZ9W95+6ZUFZB9/NQEjRvbHeKQk0g58jKp1elqK6
+9dArk41AF//QdY3rQzj79nC8pgjIbg7xJiVynOReq+d3EXhxa2W16fd+tPE5
+QUV1BHKTnatLTUoQK2t1HZUETJ7CwHhHFbTeosptFwh85R4id4ocgWTp45QT
+5wmErckE+ZTfliuJ2TllBC6lfx6rKVrAj17p3k9EBPbUvMqNp3gV9Dl1naog
+YAxql5VSPAv5RYtv3iFgCWsdDaF4a0r2e0mlBK7VdeYHUnk8u322PkdD4Ilk
+VRxA5eXp4vq9wyaBAoWsyrTXCNEDa3vDe2Y0awIcgqm8Y8P9M+3mN1Er6chU
+vz2NeInUdsHehuMZNoVw/yzujmuWFy7a0G1QdrEwj7QB5uRx3ha0/luP6MYF
+pKar1gt30riCv844hrkZkNRXmMiqp3HVnO3IbzOAVp6wyzXYjtuYd5oW0WzA
+34y2BE+ZHbcs5etx03YDpDcCWqL20bkxOcw3atULyOIZQw0VdG7+3hvq3ex5
+TDyYsW9S0rmCj+7rN3bPInL4aOKUns4Nvrh8IO2xHi9ik9tV1H66Iq/mqlCL
+gyyG1aeSzk0JUphn8ybh51H9cxV1n/FPaX+M4xj+/OBcq4j6/+EKp7w+XgXV
+6FxnOaXvffZbdqLuAfDESX4iSv9cePrtxoYBKI9F79RT/lSDw0m1TiqUGGfc
+WbFbaB25J5ANjkL7U3h21iUbDgezrS5hk3hMaJoUFL9fiplFuggtMhmjptco
+vmW9Z4tGavT4FzGt2Bw=
+    "], {
+     {RGBColor[0.5, 0., 0.], Arrowheads[{{0.03466495114274128, 0.7}}], 
+      ArrowBox[{1, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 
+       2}], ArrowBox[{2, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 
+       34, 35, 36, 1}], ArrowBox[{3, 1}], ArrowBox[{3, 2}], ArrowBox[{4, 1}], 
+      ArrowBox[{4, 2}], 
+      ArrowBox[{4, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
+        52, 53, 54, 55, 56, 57, 58, 59, 4}]}, {InsetBox[
+       FrameBox["1",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 1], InsetBox[
+       FrameBox["2",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 2], InsetBox[
+       FrameBox["3",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 3], InsetBox[
+       FrameBox["4",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 4]}}],
+   Annotation[#, 
+    VertexCoordinateRules -> {{0.933811463554344, 0.869482848690875}, {
+     0.9341177427775514, 0.}, {0., 0.43502688266879386`}, {
+     1.8676183598099563`, 0.43516953249600193`}}]& ],
+  AspectRatio->Automatic,
+  FrameTicks->None,
+  PlotRange->All,
+  PlotRangePadding->Scaled[0.1]]], "Output",
+ CellChangeTimes->{{3.688163450756753*^9, 3.6881634536167717`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphPlot", "[", 
+  RowBox[{
+   RowBox[{"GraphData", "[", 
+    RowBox[{"\"\<DesarguesGraph\>\"", ",", "\"\<EdgeRules\>\""}], "]"}], ",", 
+   RowBox[{"VertexCoordinateRules", "\[Rule]", 
+    RowBox[{"GraphData", "[", 
+     RowBox[{"\"\<DesarguesGraph\>\"", ",", "\"\<VertexCoordinateRules\>\""}],
+      "]"}]}], ",", 
+   RowBox[{"VertexLabeling", "\[Rule]", "True"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[GraphicsComplexBox[CompressedData["
+1:eJxTTMoPSmViYGAQAWIQzRLGp7tp7vv92u1iN899P7w/oHd6nlDzm/2lkyWA
+Undh4vYwdWjq7S23nCjbN//ZfhgN0wc1xx6Njy5uD7MX3VwoH07D1MH0wcyD
+2gt3B5p59rjcATMHzTx0++zRzEf3rz0AVPyfKg==
+    "], {
+     {RGBColor[0.5, 0., 0.], 
+      LineBox[{{1, 2}, {1, 3}, {1, 4}, {2, 5}, {2, 6}, {3, 12}, {5, 7}, {5, 
+       8}, {6, 20}, {7, 9}, {7, 10}, {8, 19}, {9, 3}, {9, 11}, {10, 14}, {11, 
+       18}, {12, 13}, {12, 14}, {13, 15}, {13, 16}, {14, 6}, {15, 11}, {15, 
+       17}, {16, 4}, {17, 10}, {18, 8}, {18, 4}, {19, 17}, {19, 20}, {20, 
+       16}}]}, {InsetBox[
+       FrameBox["1",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 1], InsetBox[
+       FrameBox["2",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 2], InsetBox[
+       FrameBox["6",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 3], InsetBox[
+       FrameBox["20",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 4], InsetBox[
+       FrameBox["3",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 5], InsetBox[
+       FrameBox["17",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 6], InsetBox[
+       FrameBox["4",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 7], InsetBox[
+       FrameBox["12",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 8], InsetBox[
+       FrameBox["5",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 9], InsetBox[
+       FrameBox["15",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 10], InsetBox[
+       FrameBox["10",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 11], InsetBox[
+       FrameBox["7",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 12], InsetBox[
+       FrameBox["8",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 13], InsetBox[
+       FrameBox["16",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 14], InsetBox[
+       FrameBox["9",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 15], InsetBox[
+       FrameBox["19",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 16], InsetBox[
+       FrameBox["14",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 17], InsetBox[
+       FrameBox["11",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 18], InsetBox[
+       FrameBox["13",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 19], InsetBox[
+       FrameBox["18",
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 20]}}],
+   Annotation[#, VertexCoordinateRules -> CompressedData["
+1:eJxTTMoPSmViYGAQAWIQzRLGp7tp7vv92u1iN899P7w/oHd6nlDzm/2lkyWA
+Undh4vYwdWjq7S23nCjbN//ZfhgN0wc1xx6Njy5uD7MX3VwoH07D1MH0wcyD
+2gt3B5p59rjcATMHzTx0++zRzEf3rz0AVPyfKg==
+     "]]& ],
+  AspectRatio->Automatic,
+  FrameTicks->None,
+  PlotRange->All,
+  PlotRangePadding->Scaled[0.1]]], "Output",
+ CellChangeTimes->{3.6881635481072598`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["General Gibbs Distribution", "Subsubsection",
+ CellChangeTimes->{{3.688163656753067*^9, 3.6881636643044014`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"P", "(", 
+   RowBox[{"A", ",", "B", ",", "C", ",", "D"}], ")"}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.688163669913345*^9, 3.6881637000163*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\"\<A\>\"", "\[Rule]", "\"\<B\>\""}], ",", 
+     RowBox[{"\"\<B\>\"", "\[Rule]", "\"\<C\>\""}], ",", 
+     RowBox[{"\"\<C\>\"", "\[Rule]", "\"\<D\>\""}], ",", 
+     RowBox[{"\"\<D\>\"", "\[Rule]", "\"\<A\>\""}], ",", 
+     RowBox[{"\"\<A\>\"", "\[Rule]", "\"\<C\>\""}], ",", 
+     RowBox[{"\"\<B\>\"", "\[Rule]", "\"\<D\>\""}]}], "}"}], ",", 
+   RowBox[{"VertexLabeling", "\[Rule]", "True"}], ",", 
+   RowBox[{"VertexRenderingFunction", "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"White", ",", 
+        RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
+        RowBox[{"Disk", "[", 
+         RowBox[{"#", ",", ".1"}], "]"}], ",", "Black", ",", 
+        RowBox[{"Text", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"#2", ",", "18"}], "]"}], ",", "#1"}], "]"}]}], "}"}], 
+      "&"}], ")"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.688163704160825*^9, 3.6881637422647424`*^9}, {
+  3.6881639072402325`*^9, 3.6881639231174283`*^9}, {3.688163966549095*^9, 
+  3.688164029249384*^9}, {3.6881640772552633`*^9, 3.688164120743971*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[GraphicsGroupBox[{
+     GraphicsComplexBox[{{0.880091471128384, 0.013151647601082506`}, {
+      0.013238280413972237`, 0.}, {0.8663280199581702, 0.8780036400260698}, {
+      0., 0.8656691166797376}}, 
+      {RGBColor[0.5, 0., 0.], 
+       LineBox[{{1, 2}, {1, 3}, {2, 3}, {2, 4}, {3, 4}, {4, 1}}]}], {
+      {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+       DiskBox[{0.880091471128384, 0.013151647601082506`}, 0.1], 
+       {GrayLevel[0], InsetBox[
+         StyleBox["\<\"A\"\>",
+          StripOnInput->False,
+          FontSize->18], {0.880091471128384, 0.013151647601082506`}]}}, 
+      {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+       DiskBox[{0.013238280413972237`, 0.}, 0.1], 
+       {GrayLevel[0], InsetBox[
+         StyleBox["\<\"B\"\>",
+          StripOnInput->False,
+          FontSize->18], {0.013238280413972237`, 0.}]}}, 
+      {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+       DiskBox[{0.8663280199581702, 0.8780036400260698}, 0.1], 
+       {GrayLevel[0], InsetBox[
+         StyleBox["\<\"C\"\>",
+          StripOnInput->False,
+          FontSize->18], {0.8663280199581702, 0.8780036400260698}]}}, 
+      {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+       DiskBox[{0., 0.8656691166797376}, 0.1], 
+       {GrayLevel[0], InsetBox[
+         StyleBox["\<\"D\"\>",
+          StripOnInput->False,
+          FontSize->18], {0., 0.8656691166797376}]}}}},
+    ContentSelectable->True],
+   Annotation[#, 
+    VertexCoordinateRules -> {{0.880091471128384, 0.013151647601082506`}, {
+     0.013238280413972237`, 0.}, {0.8663280199581702, 0.8780036400260698}, {
+     0., 0.8656691166797376}}]& ],
+  AspectRatio->Automatic,
+  FrameTicks->None,
+  ImageSize->{208., Automatic},
+  PlotRange->All,
+  PlotRangePadding->Scaled[0.1]]], "Output",
+ CellChangeTimes->{
+  3.6881637428781633`*^9, 3.688163923557739*^9, {3.6881639673146353`*^9, 
+   3.688164034385993*^9}, {3.68816407972901*^9, 3.688164089038583*^9}, 
+   3.688164121248326*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Consider a fully connected pairwise Markov network over ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["X", "1"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",..., ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["X", "n"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " where each ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["X", "i"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " has d values. How many parameters does the network have? ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"O", "(", 
+    RowBox[{
+     SuperscriptBox["n", "2"], 
+     SuperscriptBox["d", "2"]}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "TextNoIndent",
+ CellChangeTimes->{{3.688165556336413*^9, 3.688165618816279*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"O", "(", 
+    RowBox[{
+     RowBox[{"(", GridBox[{
+        {"n"},
+        {"2"}
+       }], ")"}], " ", 
+     SuperscriptBox["d", "2"]}], ")"}], "=", 
+   RowBox[{
+    RowBox[{"O", "(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"n", "(", 
+        RowBox[{"n", "-", "1"}], ")"}], "2"], 
+      SuperscriptBox["d", "2"]}], ")"}], "=", 
+    RowBox[{"O", "(", 
+     RowBox[{
+      SuperscriptBox["n", "2"], 
+      SuperscriptBox["d", "2"]}], ")"}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.688165719615801*^9, 3.6881657616150403`*^9}}],
+
+Cell["Factors:", "TextIndent",
+ CellChangeTimes->{{3.6881659668066874`*^9, 3.688165969670769*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[CapitalPhi]", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["\[Phi]", "1"], "(", 
+       SubscriptBox["D", "1"], ")"}], ",", "...", ",", 
+      RowBox[{
+       SubscriptBox["\[Phi]", "k"], "(", 
+       SubscriptBox["D", "k"], ")"}]}], "}"}]}], ",", "   ", 
+   RowBox[{"unnormalized", " ", "measure", " ", 
+    SubscriptBox["\[Phi]", "i"]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6881659729185815`*^9, 3.6881659911994762`*^9}, {
+   3.6881660310636244`*^9, 3.688166044382028*^9}, 3.6881660917574787`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox[
+     OverscriptBox["P", "~"], "\[CapitalPhi]"], "(", 
+    RowBox[{
+     SubscriptBox["X", "1"], ",", "...", ",", 
+     SubscriptBox["X", "n"]}], ")"}], "=", 
+   RowBox[{
+    OverscriptBox[
+     UnderscriptBox["\[CapitalPi]", 
+      RowBox[{"i", "=", "1"}]], "k"], 
+    RowBox[{
+     SubscriptBox["\[Phi]", "i"], "(", 
+     SubscriptBox["D", "i"], ")"}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.688166021173641*^9, 3.688166088077886*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["Z", "\[CapitalPhi]"], "=", 
+   RowBox[{
+    UnderscriptBox["\[Sum]", 
+     RowBox[{
+      SubscriptBox["X", "1"], ",", "...", ",", 
+      SubscriptBox["X", "n"]}]], 
+    RowBox[{
+     SubscriptBox[
+      OverscriptBox["P", "~"], "\[CapitalPhi]"], "(", 
+     RowBox[{
+      SubscriptBox["X", "1"], ",", 
+      RowBox[{"...", "."}], ",", 
+      SubscriptBox["X", "n"]}], ")"}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6881660953189993`*^9, 3.6881661405018973`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["P", "\[CapitalPhi]"], "(", 
+    RowBox[{
+     SubscriptBox["X", "1"], ",", "...", ",", 
+     SubscriptBox["X", "n"]}], ")"}], "=", 
+   RowBox[{
+    FractionBox["1", 
+     SubscriptBox["Z", "\[CapitalPhi]"]], 
+    RowBox[{
+     SubscriptBox[
+      OverscriptBox["P", "~"], "\[CapitalPhi]"], "(", 
+     RowBox[{
+      SubscriptBox["X", "1"], ",", "...", ",", 
+      SubscriptBox["X", "n"]}], ")"}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6881661469334393`*^9, 3.6881661638133655`*^9}}],
+
+Cell["\<\
+Gibbs Free energy will be the corresponding thing in physics to the gibbs \
+distribution for random variables\
+\>", "TextNoIndent",
+ CellChangeTimes->{{3.6881665694767923`*^9, 3.6881666222370453`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Induced Markov Network", "Subsubsubsection",
+ CellChangeTimes->{{3.6881668666189184`*^9, 3.6881668761943045`*^9}}],
+
+Cell[TextData[{
+ "Induced Markov network ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["H", "\[CapitalPhi]"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " has an edge ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["X", "i"], "-", 
+    SubscriptBox["X", "j"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " whenever there exists ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Phi]", "m"], "\[Element]", "\[CapitalPhi]"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " s.t. ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["X", "i"], ",", 
+    RowBox[{
+     SubscriptBox["X", "j"], "\[Element]", 
+     SubscriptBox["\[Phi]", "m"]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "TextIndent",
+ CellChangeTimes->{{3.688166893243147*^9, 3.6881669806595273`*^9}, 
+   3.688167023153396*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\"\<A\>\"", "\[Rule]", "\"\<B\>\""}], ",", 
+     RowBox[{"\"\<B\>\"", "\[Rule]", "\"\<C\>\""}], ",", 
+     RowBox[{"\"\<C\>\"", "\[Rule]", "\"\<D\>\""}], ",", 
+     RowBox[{"\"\<D\>\"", "\[Rule]", "\"\<A\>\""}], ",", 
+     RowBox[{"\"\<B\>\"", "\[Rule]", "\"\<D\>\""}]}], "}"}], ",", 
+   RowBox[{"VertexLabeling", "\[Rule]", "True"}], ",", 
+   RowBox[{"VertexRenderingFunction", "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"White", ",", 
+        RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
+        RowBox[{"Disk", "[", 
+         RowBox[{"#", ",", ".1"}], "]"}], ",", "Black", ",", 
+        RowBox[{"Text", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"#2", ",", "18"}], "]"}], ",", "#1"}], "]"}]}], "}"}], 
+      "&"}], ")"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6881671332284117`*^9, 3.68816713633766*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[GraphicsGroupBox[{
+     GraphicsComplexBox[{{1.867535537518732, 0.4340935090459442}, {
+      0.933504522189055, 0.}, {0., 0.43474650277495547`}, {0.934906558473912, 
+      0.869570399177328}}, 
+      {RGBColor[0.5, 0., 0.], 
+       LineBox[{{1, 2}, {2, 3}, {2, 4}, {3, 4}, {4, 1}}]}], {
+      {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+       DiskBox[{1.867535537518732, 0.4340935090459442}, 0.1], 
+       {GrayLevel[0], InsetBox[
+         StyleBox["\<\"A\"\>",
+          StripOnInput->False,
+          FontSize->18], {1.867535537518732, 0.4340935090459442}]}}, 
+      {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+       DiskBox[{0.933504522189055, 0.}, 0.1], 
+       {GrayLevel[0], InsetBox[
+         StyleBox["\<\"B\"\>",
+          StripOnInput->False,
+          FontSize->18], {0.933504522189055, 0.}]}}, 
+      {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+       DiskBox[{0., 0.43474650277495547`}, 0.1], 
+       {GrayLevel[0], InsetBox[
+         StyleBox["\<\"C\"\>",
+          StripOnInput->False,
+          FontSize->18], {0., 0.43474650277495547`}]}}, 
+      {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+       DiskBox[{0.934906558473912, 0.869570399177328}, 0.1], 
+       {GrayLevel[0], InsetBox[
+         StyleBox["\<\"D\"\>",
+          StripOnInput->False,
+          FontSize->18], {0.934906558473912, 0.869570399177328}]}}}},
+    ContentSelectable->True],
+   Annotation[#, 
+    VertexCoordinateRules -> {{1.867535537518732, 0.4340935090459442}, {
+     0.933504522189055, 0.}, {0., 0.43474650277495547`}, {0.934906558473912, 
+     0.869570399177328}}]& ],
+  AspectRatio->Automatic,
+  FrameTicks->None,
+  PlotRange->All,
+  PlotRangePadding->Scaled[0.1]]], "Output",
+ CellChangeTimes->{{3.6881671355644903`*^9, 3.688167136703378*^9}}]
+}, Open  ]],
+
+Cell["\<\
+All following Gibbs distribution would induce the above graph\
+\>", "TextNoIndent",
+ CellChangeTimes->{{3.688167185969981*^9, 3.6881672136568384`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["\[Phi]", "1"], "(", 
+    RowBox[{"A", ",", "B", ",", "D"}], ")"}], ",", " ", 
+   RowBox[{
+    SubscriptBox["\[Phi]", "2"], "(", 
+    RowBox[{"B", ",", "C", ",", "D"}], ")"}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["\[Phi]", "1"], "(", 
+    RowBox[{"A", ",", "B"}], ")"}], ",", " ", 
+   RowBox[{
+    SubscriptBox["\[Phi]", "2"], "(", 
+    RowBox[{"B", ",", "C"}], ")"}], ",", " ", 
+   RowBox[{
+    SubscriptBox["\[Phi]", "3"], "(", 
+    RowBox[{"C", ",", "D"}], ")"}], ",", " ", 
+   RowBox[{
+    SubscriptBox["\[Phi]", "4"], "(", 
+    RowBox[{"A", ",", "D"}], ")"}], ",", " ", 
+   RowBox[{
+    SubscriptBox["\[Phi]", "5"], "(", 
+    RowBox[{"B", ",", "D"}], ")"}]}], TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["\[Phi]", "1"], "(", 
+    RowBox[{"A", ",", "B", ",", "D"}], ")"}], ",", " ", 
+   RowBox[{
+    SubscriptBox["\[Phi]", "2"], "(", 
+    RowBox[{"B", ",", "C"}], ")"}], ",", " ", 
+   RowBox[{
+    SubscriptBox["\[Phi]", "3"], "(", 
+    RowBox[{"C", ",", "D"}], ")"}]}], 
+  TraditionalForm]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.6881671417218027`*^9, 3.688167180232869*^9}, {
+   3.6881672206162243`*^9, 3.6881672380642786`*^9}, 3.6881673388755817`*^9}],
+
+Cell["\<\
+Influence can flow along any trail, regardless of the for m of the factors\
+\>", "TextNoIndent",
+ CellChangeTimes->{{3.688167344167987*^9, 3.688167364423698*^9}}],
+
+Cell[TextData[{
+ "A trail ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SubscriptBox["X", "1"], "-"}], "..."}], "-", 
+    SubscriptBox["X", "n"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is active given ",
+ Cell[BoxData[
+  FormBox["Z", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " if no ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["X", "i"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is in ",
+ Cell[BoxData[
+  FormBox["Z", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "TextNoIndent",
+ CellChangeTimes->{{3.688167427056949*^9, 3.6881674589191465`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsubsection",
+ CellChangeTimes->{{3.6881675647593026`*^9, 3.6881675662965617`*^9}}],
+
+Cell["\<\
+Gibbs distribution represents distribution as a product of factors
+Induced Markov network connects every pair of nodes that are in the same factor
+Markov network structure doesn\[CloseCurlyQuote]t fully specify the \
+factorization of P
+But active trails depend only on graph structure\
+\>", "TextIndent",
+ CellChangeTimes->{{3.688167575303629*^9, 3.6881676630390434`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{791, 808},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+Magnification:>1.2 Inherited,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (2015\:5e747\:67087\
+\:65e5)",
+StyleDefinitions->"Cambria Article.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 95, 1, 99, "Title"],
+Cell[678, 25, 93, 1, 68, "Author"],
+Cell[CellGroupData[{
+Cell[796, 30, 147, 2, 37, "Subsubsection"],
+Cell[946, 34, 836, 29, 58, "TextIndent"],
+Cell[CellGroupData[{
+Cell[1807, 67, 632, 15, 55, "Input"],
+Cell[2442, 84, 2845, 57, 178, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5324, 146, 409, 9, 75, "Input"],
+Cell[5736, 157, 4096, 102, 450, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9881, 265, 119, 1, 37, "Subsubsection"],
+Cell[10003, 268, 211, 5, 36, "DisplayFormulaNumbered"],
+Cell[CellGroupData[{
+Cell[10239, 277, 1189, 27, 95, "Input"],
+Cell[11431, 306, 1954, 45, 267, "Output"]
+}, Open  ]],
+Cell[13400, 354, 756, 25, 52, "TextNoIndent"],
+Cell[14159, 381, 615, 22, 59, "DisplayFormulaNumbered"],
+Cell[14777, 405, 98, 1, 30, "TextIndent"],
+Cell[14878, 408, 612, 16, 36, "DisplayFormulaNumbered"],
+Cell[15493, 426, 536, 17, 58, "DisplayFormulaNumbered"],
+Cell[16032, 445, 549, 17, 61, "DisplayFormulaNumbered"],
+Cell[16584, 464, 583, 18, 57, "DisplayFormulaNumbered"],
+Cell[17170, 484, 211, 4, 48, "TextNoIndent"],
+Cell[CellGroupData[{
+Cell[17406, 492, 120, 1, 35, "Subsubsubsection"],
+Cell[17529, 495, 871, 32, 60, "TextIndent"],
+Cell[CellGroupData[{
+Cell[18425, 531, 980, 24, 95, "Input"],
+Cell[19408, 557, 1762, 41, 242, "Output"]
+}, Open  ]],
+Cell[21185, 601, 161, 3, 24, "TextNoIndent"],
+Cell[21349, 606, 1342, 40, 87, "DisplayFormulaNumbered"],
+Cell[22694, 648, 172, 3, 24, "TextNoIndent"],
+Cell[22869, 653, 639, 25, 24, "TextNoIndent"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23557, 684, 102, 1, 37, "Subsubsection"],
+Cell[23662, 687, 382, 7, 101, "TextIndent"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
