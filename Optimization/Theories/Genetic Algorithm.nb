@@ -1,0 +1,133 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3535,        124]
+NotebookOptionsPosition[      2761,         92]
+NotebookOutlinePosition[      3155,        109]
+CellTagsIndexPosition[      3112,        106]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Genetic Algorithm", "Title",
+ CellChangeTimes->{{3.6888930738706007`*^9, 3.6888930770374603`*^9}}],
+
+Cell["Yang Long", "Author",
+ CellChangeTimes->{{3.688893084534479*^9, 3.688893089294252*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Gene", "Subsubsection",
+ CellChangeTimes->{{3.688893096093357*^9, 3.6888931180860987`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"NumOfChromes", " ", "=", " ", "10"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NumOfGenes", " ", "=", " ", "10"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Genes", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"RandomInteger", "[", "]"}], ",", "NumOfChromes"}], "]"}], ",",
+      "NumOfGenes"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6888933526261606`*^9, 3.6888934515155797`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Fitness", "Subsubsection",
+ CellChangeTimes->{{3.6888933284946594`*^9, 3.68889333272412*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"fitness", "[", "gene_", "]"}], ":=", 
+   RowBox[{"Total", "[", "gene", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6888934819367857`*^9, 3.6888934908160663`*^9}, {
+   3.688893526843431*^9, 3.6888936104434853`*^9}, {3.6888936703307095`*^9, 
+   3.6888937304341044`*^9}, {3.688893760697647*^9, 3.6888937657224045`*^9}, 
+   3.6888958205668063`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Evolution", "Subsubsection",
+ CellChangeTimes->{{3.688893312228573*^9, 3.6888933141971016`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mutation", "[", 
+   RowBox[{"gene_", ",", "prob_"}], "]"}], ":="}]], "Input",
+ CellChangeTimes->{{3.688893778688949*^9, 3.6888937826103706`*^9}, {
+  3.688895801471352*^9, 3.688895822230792*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cross", "[", 
+   RowBox[{"gene1_", ",", "gene2_", ",", "len_", ",", "prob_"}], "]"}], 
+  ":="}]], "Input",
+ CellChangeTimes->{{3.68889581183838*^9, 3.688895832904306*^9}, {
+  3.6888959207208157`*^9, 3.6888959313356895`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"select", "[", "genes_", "]"}], ":="}]], "Input",
+ CellChangeTimes->{{3.688895957470145*^9, 3.6888959634623094`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{775, 693},
+WindowMargins->{{Automatic, 126}, {Automatic, 23}},
+Magnification:>1.2 Inherited,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (2015\:5e747\:67087\
+\:65e5)",
+StyleDefinitions->"Cambria Article.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 104, 1, 99, "Title"],
+Cell[687, 25, 93, 1, 68, "Author"],
+Cell[CellGroupData[{
+Cell[805, 30, 97, 1, 37, "Subsubsection"],
+Cell[905, 33, 507, 13, 75, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1449, 51, 99, 1, 37, "Subsubsection"],
+Cell[1551, 54, 395, 8, 34, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1983, 67, 102, 1, 37, "Subsubsection"],
+Cell[2088, 70, 229, 5, 34, "Input"],
+Cell[2320, 77, 259, 6, 34, "Input"],
+Cell[2582, 85, 151, 3, 34, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

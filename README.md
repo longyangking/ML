@@ -2,6 +2,7 @@
 Machine Learning Notes & Demo
 
 ##Content
++ Basic CS algorithms
 + Softmax Regression
 + Cross-entropy
 + Back-propagation
