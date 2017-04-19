@@ -1,0 +1,293 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8575,        284]
+NotebookOptionsPosition[      7246,        244]
+NotebookOutlinePosition[      7641,        261]
+CellTagsIndexPosition[      7598,        258]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Neural Network - I", "Title",
+ CellChangeTimes->{{3.701590596100401*^9, 3.701590600164401*^9}, {
+  3.701590646980401*^9, 3.701590648004401*^9}}],
+
+Cell["Yang Long", "Author",
+ CellChangeTimes->{{3.701590607868401*^9, 3.701590609811401*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Back propagation", "Subsubsection",
+ CellChangeTimes->{{3.701590602132401*^9, 3.701590602692401*^9}, {
+  3.701590710900401*^9, 3.701590713396401*^9}}],
+
+Cell["\<\
+Useful link: http://galaxy.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html\
+\>", "SmallText",
+ CellChangeTimes->{{3.701594985876401*^9, 3.7015949921164007`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["e", "k"], "=", 
+   RowBox[{
+    UnderscriptBox["\[Sum]", "k"], 
+    RowBox[{
+     SubscriptBox["w", 
+      RowBox[{"k", " ", "i"}]], 
+     SubscriptBox["x", "k"]}]}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.7015952729644012`*^9, 3.701595280436401*^9}, {
+  3.701595323988401*^9, 3.701595324276401*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["y", "i"], "=", 
+   RowBox[{
+    RowBox[{"f", "(", "e", ")"}], "=", 
+    RowBox[{"f", "(", 
+     RowBox[{
+      UnderscriptBox["\[Sum]", "k"], 
+      RowBox[{
+       SubscriptBox["w", 
+        RowBox[{"k", " ", "i"}]], 
+       SubscriptBox["x", "k"]}]}], ")"}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.7015950039244013`*^9, 3.7015950644844007`*^9}, 
+   3.701595165044401*^9, {3.701595283428401*^9, 3.701595289124401*^9}, {
+   3.701595771220401*^9, 3.701595807220401*^9}, {3.701595916996401*^9, 
+   3.701595959508401*^9}}],
+
+Cell["Finally, we have error \[Delta]:", "TextIndent",
+ CellChangeTimes->{{3.701595076372401*^9, 3.701595086596401*^9}, 
+   3.7015952125164013`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Delta]", "=", 
+   RowBox[{
+    UnderscriptBox["\[Sum]", "i"], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["y", "i"], "-", 
+       SubscriptBox[
+        OverscriptBox["y", "~"], "i"]}], ")"}], "2"]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.7015950885164013`*^9, 3.701595111764401*^9}}],
+
+Cell["Error propagation:", "TextIndent",
+ CellChangeTimes->{{3.701595203652401*^9, 3.701595210596401*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["\[Delta]", "i"], "=", 
+   RowBox[{
+    UnderscriptBox["\[Sum]", "k"], 
+    RowBox[{
+     SubscriptBox["w", 
+      RowBox[{"i", " ", "k"}]], 
+     SubscriptBox["\[Delta]", "k"]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.701595126212401*^9, 3.701595162804401*^9}, {
+  3.7015957613324013`*^9, 3.7015957622924013`*^9}}],
+
+Cell["Update Parameters:", "TextIndent",
+ CellChangeTimes->{{3.701595215668401*^9, 3.701595222836401*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubsuperscriptBox["w", 
+    RowBox[{"i", " ", "k"}], "\[Prime]"], "=", 
+   RowBox[{
+    SubscriptBox["w", 
+     RowBox[{"i", " ", "k"}]], "+", 
+    RowBox[{"\[Eta]", " ", 
+     SubscriptBox["\[Delta]", "k"], 
+     FractionBox[
+      RowBox[{"\[PartialD]", 
+       RowBox[{"f", "(", 
+        SubscriptBox["e", "k"], ")"}]}], 
+      RowBox[{"\[PartialD]", "e"}]], 
+     SubscriptBox["y", "k"]}]}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.7015951973804007`*^9, 3.701595254456401*^9}, {
+  3.701595296324401*^9, 3.7015953207404013`*^9}}],
+
+Cell[TextData[{
+ "When ",
+ Cell[BoxData[
+  FormBox["f", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is sigmoid function:"
+}], "TextIndent",
+ CellChangeTimes->{{3.701595554324401*^9, 3.7015955677484007`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[PartialD]", "f"}], 
+    RowBox[{"\[PartialD]", "e"}]], "=", 
+   RowBox[{
+    RowBox[{
+     FractionBox["\[PartialD]", 
+      RowBox[{"\[PartialD]", "e"}]], 
+     RowBox[{"(", 
+      FractionBox["1", 
+       RowBox[{"1", "+", 
+        RowBox[{"exp", "(", 
+         RowBox[{"-", "e"}], ")"}]}]], ")"}]}], "=", 
+    RowBox[{
+     RowBox[{"f", "(", "e", ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"f", "(", "e", ")"}]}], ")"}]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.701595569188401*^9, 3.7015956125644007`*^9}, {
+  3.701595679620401*^9, 3.7015956867404013`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubsuperscriptBox["w", 
+    RowBox[{"i", " ", "k"}], "\[Prime]"], "=", 
+   RowBox[{
+    SubscriptBox["w", 
+     RowBox[{"i", " ", "k"}]], "+", 
+    RowBox[{"\[Eta]", " ", 
+     SubscriptBox["\[Delta]", "k"], 
+     SubscriptBox["y", "k"], " ", 
+     RowBox[{"f", "(", 
+      SubscriptBox["e", "k"], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"f", "(", 
+        SubscriptBox["e", "k"], ")"}]}], ")"}]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.701595692548401*^9, 3.7015957061964006`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Vectorization", "Subsubsubsection",
+ CellChangeTimes->{{3.701596047636401*^9, 3.701596051364401*^9}}],
+
+Cell[TextData[{
+ "For sample ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    SubsuperscriptBox["x", "i", 
+     RowBox[{"(", "i", ")"}]], "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", we have"
+}], "TextIndent",
+ CellChangeTimes->{{3.701596275012401*^9, 3.701596296260401*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["Y", "i"], "=", 
+   RowBox[{
+    SubscriptBox["X", "i"], 
+    SubscriptBox["W", "i"]}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.701596244532401*^9, 3.701596251780401*^9}, {
+  3.701596324628401*^9, 3.7015963342924013`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["\[CapitalDelta]", "i"], "=", 
+   RowBox[{
+    SubscriptBox[
+     RowBox[{
+      SubscriptBox["\[CapitalDelta]", 
+       RowBox[{"i", "+", "1"}]], "(", 
+      FractionBox[
+       RowBox[{"\[PartialD]", "f"}], 
+       RowBox[{"\[PartialD]", "e"}]], ")"}], "i"], 
+    SubsuperscriptBox["W", "i", "T"]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.701596385796401*^9, 3.7015963884844007`*^9}, {
+  3.701596497812401*^9, 3.7015965192524014`*^9}, {3.701596603604401*^9, 
+  3.7015966129644012`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubsuperscriptBox["W", "i", "\[Prime]"], "=", 
+   RowBox[{
+    SubscriptBox["W", "i"], "+", 
+    RowBox[{"\[Eta]", " ", 
+     SubsuperscriptBox["Y", "i", "T"], 
+     SubscriptBox["\[CapitalDelta]", "i"]}]}]}], 
+  TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.701596358356401*^9, 3.7015963695244007`*^9}, {
+  3.701596546388401*^9, 3.701596559780401*^9}, {3.701596625620401*^9, 
+  3.701596626966401*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{775, 904},
+WindowMargins->{{Automatic, 101}, {-9, Automatic}},
+Magnification:>1.4 Inherited,
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7410\:67089\
+\:65e5)",
+StyleDefinitions->"Cambria Article.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 150, 2, 115, "Title"],
+Cell[733, 26, 93, 1, 81, "Author"],
+Cell[CellGroupData[{
+Cell[851, 31, 156, 2, 43, "Subsubsection"],
+Cell[1010, 35, 168, 3, 16, "SmallText"],
+Cell[1181, 40, 382, 11, 68, "DisplayFormulaNumbered"],
+Cell[1566, 53, 606, 17, 80, "DisplayFormulaNumbered"],
+Cell[2175, 72, 148, 2, 35, "TextIndent"],
+Cell[2326, 76, 385, 12, 68, "DisplayFormulaNumbered"],
+Cell[2714, 90, 106, 1, 35, "TextIndent"],
+Cell[2823, 93, 401, 12, 68, "DisplayFormulaNumbered"],
+Cell[3227, 107, 106, 1, 35, "TextIndent"],
+Cell[3336, 110, 599, 17, 71, "DisplayFormulaNumbered"],
+Cell[3938, 129, 219, 7, 35, "TextIndent"],
+Cell[4160, 138, 686, 22, 75, "DisplayFormulaNumbered"],
+Cell[4849, 162, 583, 18, 46, "DisplayFormulaNumbered"],
+Cell[CellGroupData[{
+Cell[5457, 184, 107, 1, 41, "Subsubsubsection"],
+Cell[5567, 187, 295, 10, 42, "TextIndent"],
+Cell[5865, 199, 302, 8, 42, "DisplayFormulaNumbered"],
+Cell[6170, 209, 572, 16, 70, "DisplayFormulaNumbered"],
+Cell[6745, 227, 461, 12, 45, "DisplayFormulaNumbered"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
