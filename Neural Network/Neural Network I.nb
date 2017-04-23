@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8575,        284]
+NotebookDataLength[      8574,        284]
 NotebookOptionsPosition[      7246,        244]
-NotebookOutlinePosition[      7641,        261]
-CellTagsIndexPosition[      7598,        258]
+NotebookOutlinePosition[      7640,        261]
+CellTagsIndexPosition[      7597,        258]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -242,10 +242,10 @@ Cell[BoxData[
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{775, 904},
-WindowMargins->{{Automatic, 101}, {-9, Automatic}},
-Magnification:>1.4 Inherited,
-FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7410\:67089\
+WindowSize->{1600, 817},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.6 Inherited,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (2015\:5e747\:67087\
 \:65e5)",
 StyleDefinitions->"Cambria Article.nb"
 ]
@@ -261,28 +261,28 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 150, 2, 115, "Title"],
-Cell[733, 26, 93, 1, 81, "Author"],
+Cell[580, 22, 150, 2, 131, "Title"],
+Cell[733, 26, 93, 1, 93, "Author"],
 Cell[CellGroupData[{
-Cell[851, 31, 156, 2, 43, "Subsubsection"],
-Cell[1010, 35, 168, 3, 16, "SmallText"],
-Cell[1181, 40, 382, 11, 68, "DisplayFormulaNumbered"],
-Cell[1566, 53, 606, 17, 80, "DisplayFormulaNumbered"],
-Cell[2175, 72, 148, 2, 35, "TextIndent"],
-Cell[2326, 76, 385, 12, 68, "DisplayFormulaNumbered"],
-Cell[2714, 90, 106, 1, 35, "TextIndent"],
-Cell[2823, 93, 401, 12, 68, "DisplayFormulaNumbered"],
-Cell[3227, 107, 106, 1, 35, "TextIndent"],
-Cell[3336, 110, 599, 17, 71, "DisplayFormulaNumbered"],
-Cell[3938, 129, 219, 7, 35, "TextIndent"],
+Cell[851, 31, 156, 2, 50, "Subsubsection"],
+Cell[1010, 35, 168, 3, 21, "SmallText"],
+Cell[1181, 40, 382, 11, 78, "DisplayFormulaNumbered"],
+Cell[1566, 53, 606, 17, 92, "DisplayFormulaNumbered"],
+Cell[2175, 72, 148, 2, 40, "TextIndent"],
+Cell[2326, 76, 385, 12, 75, "DisplayFormulaNumbered"],
+Cell[2714, 90, 106, 1, 40, "TextIndent"],
+Cell[2823, 93, 401, 12, 76, "DisplayFormulaNumbered"],
+Cell[3227, 107, 106, 1, 40, "TextIndent"],
+Cell[3336, 110, 599, 17, 70, "DisplayFormulaNumbered"],
+Cell[3938, 129, 219, 7, 40, "TextIndent"],
 Cell[4160, 138, 686, 22, 75, "DisplayFormulaNumbered"],
-Cell[4849, 162, 583, 18, 46, "DisplayFormulaNumbered"],
+Cell[4849, 162, 583, 18, 51, "DisplayFormulaNumbered"],
 Cell[CellGroupData[{
-Cell[5457, 184, 107, 1, 41, "Subsubsubsection"],
-Cell[5567, 187, 295, 10, 42, "TextIndent"],
-Cell[5865, 199, 302, 8, 42, "DisplayFormulaNumbered"],
-Cell[6170, 209, 572, 16, 70, "DisplayFormulaNumbered"],
-Cell[6745, 227, 461, 12, 45, "DisplayFormulaNumbered"]
+Cell[5457, 184, 107, 1, 47, "Subsubsubsection"],
+Cell[5567, 187, 295, 10, 44, "TextIndent"],
+Cell[5865, 199, 302, 8, 48, "DisplayFormulaNumbered"],
+Cell[6170, 209, 572, 16, 73, "DisplayFormulaNumbered"],
+Cell[6745, 227, 461, 12, 50, "DisplayFormulaNumbered"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
