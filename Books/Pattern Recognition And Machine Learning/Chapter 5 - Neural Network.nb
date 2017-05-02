@@ -1,0 +1,73 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      1614,         64]
+NotebookOptionsPosition[      1156,         43]
+NotebookOutlinePosition[      1521,         59]
+CellTagsIndexPosition[      1478,         56]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Neural Network", "Title",
+ CellChangeTimes->{3.7024244922377615`*^9}],
+
+Cell["Yang Long", "Author",
+ CellChangeTimes->{{3.7024244970541844`*^9, 3.7024245001102076`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Model", "Subsubsection",
+ CellChangeTimes->{{3.7024320205191946`*^9, 3.7024320211187057`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"y", "(", 
+    RowBox[{"X", ",", "W"}], ")"}], "=", 
+   RowBox[{"f", "(", "\[Sum]"}]}], TraditionalForm]], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.70243203253599*^9, 3.7024320427065644`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{775, 693},
+WindowMargins->{{Automatic, -135}, {35, Automatic}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (2015\:5e747\:67087\
+\:65e5)",
+StyleDefinitions->"Cambria Article.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 75, 1, 83, "Title"],
+Cell[658, 25, 97, 1, 58, "Author"],
+Cell[CellGroupData[{
+Cell[780, 30, 100, 1, 30, "Subsubsection"],
+Cell[883, 33, 245, 6, 40, "DisplayFormulaNumbered"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
