@@ -22,11 +22,14 @@ function newparticles = psoMutation(particles,psoopt)
     
     if ~isempty(IntCon)
         intparticles = floor(newparticles(:,IntCon));
-        intparticles = intparticles + (rand(particlesize,length(IntCon)) > 0.5);
-        pos = intparticles>UBbase;
+        intparticles = intparticles + 1*(rand(particlesize,length(IntCon)) > 0.5);
+
+        UBbase = UBbase(:,IntCon); LBbase = LBbase(:,IntCon);
+        pos = find(intparticles>UBbase);
         intparticles(pos) = UBbase(pos);
-        pos = intparticles<LBbase;
+        pos = find(intparticles<LBbase);
         intparticles(pos) = LBbase(pos);
+
         newparticles(:,IntCon) = intparticles;
     end
 end

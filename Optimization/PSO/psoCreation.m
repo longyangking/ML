@@ -13,10 +13,13 @@ function [particles,velocities] = psoCreation(psoopt)
     if ~isempty(IntCon)
         intparticles = floor(particles(:,IntCon));
         intparticles = intparticles + (rand(particlesize,length(IntCon)) > 0.5);
-        pos = intparticles>UBbase;
+
+        UBbase = UBbase(:,IntCon); LBbase = LBbase(:,IntCon);
+        pos = find(intparticles>UBbase);
         intparticles(pos) = UBbase(pos);
-        pos = intparticles<LBbase;
+        pos = find(intparticles<LBbase);
         intparticles(pos) = LBbase(pos);
+
         particles(:,IntCon) = intparticles;
     end
 end

@@ -52,6 +52,8 @@ function [globalbestparticles,globalbestobjectives] = PSO(psoopt)
 
             combineparticles = [particles; newparticles];
             objectives = func(combineparticles);
+            size(objectives)
+            size(repmat(constraintfunction(combineparticles),1,targetsize))
             fitness = objectives + repmat(constraintfunction(combineparticles),1,targetsize); % To deal with constraint
 
             scaledfitness = fitnessscalefunction(fitness);
