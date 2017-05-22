@@ -1,3 +1,7 @@
+% Author: Yang Long
+%
+% E-mail: longyang_123@yeah.net
+
 function [globalbestparticles,globalbestobjectives] = PSO(psoopt)
     % Read PSO options
     func = psoopt.Fitnessfunction;
@@ -52,8 +56,6 @@ function [globalbestparticles,globalbestobjectives] = PSO(psoopt)
 
             combineparticles = [particles; newparticles];
             objectives = func(combineparticles);
-            size(objectives)
-            size(repmat(constraintfunction(combineparticles),1,targetsize))
             fitness = objectives + repmat(constraintfunction(combineparticles),1,targetsize); % To deal with constraint
 
             scaledfitness = fitnessscalefunction(fitness);

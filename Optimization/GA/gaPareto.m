@@ -1,11 +1,7 @@
-% Author: Yang Long
-%
-% E-mail: longyang_123@yeah.net
-
-function [ranks,distance] = psoPareto(fitness)
+function [ranks,distance] = gaPareto(fitness)
     [popsize,targetsize] = size(fitness);
-    ranks = zeros(1,popsize);
-    distance = zeros(1,popsize);
+    ranks = zeros(popsize,1);
+    distance = zeros(popsize,1);
     
     fronts = {};
     fronts{1} = [];

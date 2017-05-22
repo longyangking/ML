@@ -1,3 +1,7 @@
+% Author: Yang Long
+%
+% E-mail: longyang_123@yeah.net
+
 function psoLog(globalbestparticles,globalbestobjectives,psoopt,iter)
     directory = 'PSO_log';
     if iter == 0

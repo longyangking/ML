@@ -1,3 +1,7 @@
+% Author: Yang Long
+%
+% E-mail: longyang_123@yeah.net
+
 function newparticles = psoMutation(particles,psoopt)
     mutationrate = psoopt.MutationRate;
     LB = psoopt.LB; 

@@ -1,3 +1,7 @@
+% Author: Yang Long
+%
+% E-mail: longyang_123@yeah.net
+
 function scalefitness = psoFitnessScale(fitness)
     [particlesize,targetsize] = size(fitness);
     scalefitness = zeros(particlesize,targetsize);
