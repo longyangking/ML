@@ -1,1 +1,9 @@
 .ipynb_checkpoints/
+
+# LaTeX
+*.pdf
+*.log
+*.aux
+*.bib
+*.gz
+
