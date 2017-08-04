@@ -91,5 +91,110 @@ p(g|apple) = \frac{p(apple|g)p(g)}{p(apple)} = 0.53
 \end{equation}
 
 \section*{1.4}
+In the case of a linear transformation, i.e, $x = g(y) = k y + c$, so that 
+\begin{equation}
+\begin{aligned}
+p_y(y) &= p_x(x) \left|\frac{dx}{dy}\right| = p_x(g(y))|g'(y)| \\
+&= k p_x(x)
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\frac{\partial p_y(y)}{\partial y}&= k \frac{\partial p_x(x)}{\partial y}
+&= k^2 \frac{\partial p_x(x)}{\partial x}
+\end{aligned}
+\end{equation}
+Because $\frac{\partial p_x(\hat{x})}{\partial x} = 0$, $\frac{\partial p_y(\hat{y})}{\partial y} = 0$, where $\hat{x} = k \hat{y} + c$. 
+
+Thus, in the case of a linear transformation, the location of maximum transforms in the same way as the variable itself. But it will be totally different for non-linear transformation. 
+\begin{equation}
+\begin{aligned}
+\frac{\partial p_y(y)}{\partial y}&= \frac{\partial p_x(x)|g'(y)|}{\partial y}
+=s (g'(y))^2 \frac{\partial p_x(x) }{\partial x} + s p_x(x) g''(y)
+\end{aligned}
+\end{equation}
+wher $s \in \{-1,+1\}$. Although $\frac{\partial p_x(\hat{x})}{\partial x} = 0$, it can not be satisfied that $p_x(\hat{x}) g''(\hat{y})=0$, namely, $\frac{\partial p_y(\hat{y})}{\partial y} = 0$. For general transformation, the maximum of probability after transformation can not be guaranteed, which will be dependent on the choice of variable.
+
+\section*{1.5}
+The definition of variance of $f(x)$ is:
+\begin{equation}
+\begin{aligned}
+var[f] &= \mathbb{E}[(f(x)-\mathbb{E}[f(x)])^2] \\
+&= \mathbb{E}[f(x)^2-2\mathbb{E}[f(x)]f(x)+ \mathbb{E}[f(x)]^2] \\
+&= \mathbb{E}[f(x)^2]-2\mathbb{E}[f(x)]^2 + \mathbb{E}[f(x)]^2] \\
+&= \mathbb{E}[f(x)^2]-\mathbb{E}[f(x)]^2
+\end{aligned}
+\end{equation}
+QED
+
+\section*{1.6}
+If $x$ and $y$ are independent, then $p(x,y) = p(x)p(y)$. According to the definition of covariance, one have:
+\begin{equation}
+\begin{aligned}
+cov[x,y] &= \mathbb{E}_{x,y}[(x-\mathbb{E}[x])(y-\mathbb{E}[y])] \\
+&= \mathbb{E}_{x,y}[xy - \mathbb{E}[x]y - \mathbb{E}[y]x + \mathbb{E}[x]\mathbb{E}[y]] \\
+&= \mathbb{E}_{x,y}[xy] - \mathbb{E}[x]\mathbb{E}_{x,y}[y] - \mathbb{E}[y]\mathbb{E}_{x,y}[x] + \mathbb{E}[x]\mathbb{E}[y] \\
+&= \int p(x,y)xydxdy - \int p(x)xdx \int p(x,y)ydxdy \\ &- \int p(y)ydy \int p(x,y)xdxdy + \int p(x)xdx \int p(y)ydy \\
+&= \int p(x)p(y)xydxdy - \int p(x)xdx \int p(x)p(y)ydxdy \\ &- \int p(y)ydy \int p(x)p(y)xdxdy + \int p(x)xdx \int p(y)ydy \\
+&= \mathbb{E}[x]\mathbb{E}[y] - \mathbb{E}[x]\mathbb{E}[y] -\mathbb{E}[x]\mathbb{E}[y] + \mathbb{E}[x]\mathbb{E}[y] \\
+&= 0
+\end{aligned}
+\end{equation}
+
+\section*{1.7}
+Consider the transformation from Cartesian coordinates $(x,y)$ to polar coordinates $(r,\theta)$, 
+\begin{equation}
+x = r cos(\theta), \quad y = r sin(\theta)
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\begin{pmatrix}
+dx \\
+dy
+\end{pmatrix} &=
+\frac{\partial(x,y)}{\partial(r,\theta)}
+\begin{pmatrix}
+dr \\
+d\theta
+\end{pmatrix} = 
+\begin{pmatrix}
+\frac{\partial x}{\partial r} & \frac{\partial x}{\partial \theta} \\
+\frac{\partial y}{\partial r} & \frac{\partial y}{\partial \theta} 
+\end{pmatrix} 
+\begin{pmatrix}
+dr \\
+d\theta
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+cos(\theta) & -r sin(\theta) \\
+sin(\theta) & r cos(\theta) 
+\end{pmatrix} 
+\begin{pmatrix}
+dr \\
+d\theta
+\end{pmatrix}
+\end{aligned}
+\end{equation}
+Thus the integral can be rewritten as:
+\begin{equation}
+\begin{aligned}
+I^2 &=  \int_0^{2\pi} \int_0^{\infty} exp(-\frac{r^2}{2\sigma^2}r dr d\theta \\
+&= 2\pi\int_0^{\infty} \frac{1}{2}exp(-\frac{u}{2\sigma^2})du \\
+&= 2\pi\sigma^2
+\end{aligned}
+\end{equation}
+where $u=r^2$. So we have $I = \sqrt{2\pi\sigma^2}$.
+
+For univariate Gaussian distribution, $p(x) ~ \mathcal{N}(x|\mu,\sigma^2)$, by using transformation $y = x - \mu$, one can get the integral of Gaussian distribution as:
+\begin{equation}
+\begin{aligned}
+\int_{-\infty}^{\infty}\mathcal{N}(x|\mu,\sigma^2) dx &= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{-\infty}^{\infty} exp(-\frac{y^2}{2\sigma^2}) dy \\
+&= \frac{I}{\sqrt{2\pi\sigma^2}} = 1
+\end{aligned}
+\end{equation}
+QED.
+
+\section*{1.8}
 
 \end{document}
