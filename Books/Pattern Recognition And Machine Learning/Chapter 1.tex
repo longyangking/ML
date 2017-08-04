@@ -1,0 +1,95 @@
+\documentclass[10pt,a4paper,draft]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\author{Yang Long}
+\title{Chapter 1 - Solutions}
+
+\begin{document}
+\maketitle
+\section*{1.1}
+Consider polynomial function of the form $y(x,\bm{w})$ as:
+\begin{equation}
+y(x_n,\bm{w}) = \sum_{j=0}^M \omega_j x_n^j
+\end{equation}
+To minimize the \emph{error function} $E(\bm{w})$  with the corresponding target values $t_n$:
+\begin{equation}
+E(\bm{w}) = \frac{1}{2}\sum_{n=1}^N \{y(x_n,\bm{w})-t_n\}^2
+\end{equation}
+Following the set of equations:
+\begin{equation}
+\sum_{j=0}^M A_{ij}\omega_j  = T_i, \quad
+A_{ij} = \sum_{n=1}^{N} (x_n)^{i+j}, \quad T_i = \sum_{n=1}^{N} (x_n)^i t_n
+\end{equation}
+\begin{equation}
+\sum_{j=0}^M \sum_{n=1}^{N} (x_n)^{i+j}\omega_j  = \sum_{n=1}^{N} (x_n)^i t_n, \Rightarrow \sum_{n=1}^{N} (x_n)^i\left(\sum_{j=0}^M (x_n)^{j}\omega_j - t_n\right) = 0
+\end{equation}
+\begin{equation}
+\sum_{n=1}^{N} (x_n)^i\left(y(x_n,\bm{w}) - t_n\right) = 0, \forall i 
+\end{equation} 
+To show that the coefficients $\bm{w} = \{\omega_i\}$ that can minimize the error function, so that:
+\begin{equation}
+\frac{\partial E(\bm{w})}{\partial \omega_i} = 0
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\frac{\partial E(\bm{w})}{\partial \omega_i} &=\sum_{n=0}^N \{y(x_n,\bm{w})-t_n\} \frac{\partial y(x_n,\bm{w})}{\partial \omega_i} \\
+&=\sum_{n=0}^N \{y(x_n,\bm{w})-t_n\} x_n^i \\
+&=0
+\end{aligned}
+\end{equation}
+Thus, the coefficients $\bm{w} = \{\omega_i\}$ can minimize the error function $E(\bm{w})$.
+
+\section*{1.2}
+The regularized sum-of-squares error function (1.4) in the main text is:
+\begin{equation}
+\tilde{E}(\bm{w}) = \frac{1}{2}\sum_{n=0}^N\{y(x_n,\bm{w}) - t_n\}^2 + \frac{\lambda}{2} ||\bm{w}||^2
+\end{equation}
+where $||\bm{w}||^2 = \sum_{i=0}^M \omega_i^2$. To minimize the error function, one should set:
+\begin{equation}
+\frac{\partial \tilde{E}(\bm{w})}{\partial \omega_i} =\sum_{n=0}^N \{y(x_n,\bm{w})-t_n\} \frac{\partial y(x_n,\bm{w})}{\partial \omega_i} +\lambda \omega_i=  0
+\end{equation}
+\begin{equation}
+\sum_{n=0}^N \{y(x_n,\bm{w})-t_n\} x_n^i +\lambda \omega_i =0 
+\end{equation}
+\begin{equation}
+\sum_{n=1}^{N} (x_n)^i\left(\sum_{j=0}^M (x_n)^{j}\omega_j - t_n\right) + \lambda \omega_i =0
+\end{equation}
+\begin{equation}
+\sum_{j=0}^M \sum_{n=1}^{N} (x_n)^{i+j}\omega_j + \lambda \omega_i = \sum_{j=0}^M \left(\sum_{n=1}^{N} (x_n)^{i+j} + \lambda \delta_{ij}\right)\omega_j = \sum_{n=1}^{N} (x_n)^i t_n
+\end{equation}
+\begin{equation}
+\sum_{j=0}^M A_{ij}\omega_j= T_i, \quad A_{ij} = \sum_{n=1}^{N} (x_n)^{i+j} + \lambda \delta_{ij} 
+\end{equation}
+where delta function $ \delta_{ij}=\left\{
+\begin{aligned}
+1,\quad & i = j \\
+0,\quad & i \neq j
+\end{aligned}
+\right.$.
+
+\section*{1.3}
+According to the settings, we have
+\begin{equation}
+\begin{aligned}
+p(r) &= 0.2, \quad p(b) = 0.2, \quad p(g) = 0.6 \\
+p(apple|r) &= 0.3, \quad p(apple|b) = 0.5,\quad p(apple|g) = 0.3\\
+p(orange|r) &= 0.4, \quad p(orange|b) = 0.5,\quad p(orange|g) = 0.3\\
+p(lime|r) &= 0.3, \quad p(lime|b) = 0,\quad p(lime|g) = 0.4
+\end{aligned}
+\end{equation}
+The the probability of selecting an apple:
+\begin{equation}
+p(apple) = p(apple|r)p(r) + p(apple|b)p(b) + p(apple|g)p(g) = 0.34
+\end{equation}
+If selected fruit is an orange, the probability that it came from the green box:
+\begin{equation}
+p(g|apple) = \frac{p(apple|g)p(g)}{p(apple)} = 0.53
+\end{equation}
+
+\section*{1.4}
+
+\end{document}
