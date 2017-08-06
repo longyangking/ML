@@ -196,5 +196,150 @@ For univariate Gaussian distribution, $p(x) ~ \mathcal{N}(x|\mu,\sigma^2)$, by u
 QED.
 
 \section*{1.8}
+According to the Eq.(1.46):
+\begin{equation}
+\begin{aligned}
+\mathbb{E}[x] &= \int_{-\infty}^{\infty}\mathcal{N}(x|\mu,\sigma^2)x dx \\
+&= \int_{-\infty}^{\infty}\mathcal{N}(y|0,\sigma^2)(y + \mu) dy \\
+&= \int_{-\infty}^{\infty}\mathcal{N}(y|0,\sigma^2)ydy + \mu\int_{-\infty}^{\infty}\mathcal{N}(y|0,\sigma^2)dy
+\end{aligned}
+\end{equation}
+where $y = x-\mu$.Based on the fact:
+\begin{equation}
+\int_{-\infty}^{\infty}\mathcal{N}(y|0,\sigma^2)ydy = 0, \quad \int_{-\infty}^{\infty}\mathcal{N}(y|0,\sigma^2)dy = 1
+\end{equation}
+Thus, $\mathbb{E}[x] = \mu$, QED in (1.49).
+
+By differentiating both sides of Eq.(1.127) with respect to $\sigma^2$, one have:
+\begin{equation}
+\begin{aligned}
+\frac{\partial}{\partial (\sigma^2)} \left(\int_{-\infty}^{\infty}\mathcal{N}(x|\mu,\sigma^2) dx\right) &= 0 \\
+\int_{-\infty}^{\infty} \frac{\partial}{\partial (\sigma^2)} \mathcal{N}(x|\mu,\sigma^2) dx &= 0
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\frac{\partial}{\partial (\sigma^2)} \mathcal{N}(x|\mu,\sigma^2) &= \frac{(x-\mu)^2 - \sigma^2}{2\sigma^4} \mathcal{N}(x|\mu,\sigma^2) = 
+\frac{x^2 - 2x\mu+\mu^2 - \sigma^2}{2\sigma^4} \mathcal{N}(x|\mu,\sigma^2)
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\int_{-\infty}^{\infty} \frac{\partial}{\partial (\sigma^2)} \mathcal{N}(x|\mu,\sigma^2) dx &= \int_{-\infty}^{\infty}(x^2 - 2x\mu+\mu^2 - \sigma^2)\mathcal{N}(x|\mu,\sigma^2) \\
+& = \int_{-\infty}^{\infty}x^2\mathcal{N}(x|\mu,\sigma^2) - \int_{-\infty}^{\infty}(2x\mu-\mu^2+\sigma^2)\mathcal{N}(x|\mu,\sigma^2) \\
+&= \int_{-\infty}^{\infty}x^2\mathcal{N}(x|\mu,\sigma^2) - (\mu^2+\sigma^2) = 0
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\mathbb{E}[x^2] = \int_{-\infty}^{\infty}x^2\mathcal{N}(x|\mu,\sigma^2) = \mu^2+\sigma^2
+\end{aligned}
+\end{equation}
+QED in (1.50)
+
+It's clear that:
+\begin{equation}
+var[x] = \mathbb{E}[x^2] - \mathbb{E}[x]^2 = \mu^2 + \sigma^2 - \mu^2 = \sigma^2
+\end{equation}
+QED in (1.51)
+
+\section*{1.9}
+At the mode of the Gaussian distribution, one have
+\begin{equation}
+\begin{aligned}
+\left[\frac{\partial}{\partial x} \mathcal{N}(x|\mu,\sigma^2) \right]_{x=\hat{x}}= -\left[\frac{x-\mu}{\sigma^2} \mathcal{N}(x|\mu,\sigma^2) \right]_{x=\hat{x}}= 0
+\end{aligned}
+\end{equation}
+Thus, $\hat{x} = \mu$.
+
+Similarly, at the mode of the multivariate Gaussian, one have
+\begin{equation}
+\begin{aligned}
+\frac{\partial}{\partial \bm{x}} \mathcal{N}(\bm{x}|\bm{\mu},\bm{\Sigma}) &= -\frac{1}{2}\mathcal{N}(\bm{x}|\bm{\mu},\bm{\Sigma}) \frac{\partial}{\partial \bm{x}} ((\bm{x}-\bm{\mu})^T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}))  \\
+&= -\mathcal{N}(\bm{x}|\bm{\mu},\bm{\Sigma}) \bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}) \\
+&= 0
+\end{aligned}
+\end{equation}
+Based on $\left[\frac{\partial}{\partial \bm{x}} \mathcal{N}(\bm{x}|\bm{\mu},\bm{\Sigma})\right]_{\bm{x} = \hat{\bm{x}}} = 0$, thus, $\hat{\bm{x}} = \bm{\mu}$. QED
+
+\section*{1.10}
+Suppose that the two variables $x$ and $z$ are statistically independent, namely, $p(x,z) = p(x)p(z)$, so that:
+\begin{equation}
+\begin{aligned}
+\mathbb{E}[x+z] &= \int (x+z)p(x)p(y) dxdz \\
+&= \int x p(x)p(z) dxdz + \int z p(x)p(z) dxdz \\
+&= \mathbb{E}[x] + \mathbb{E}[z] 
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+var[x+z] &= \mathbb{E}[(x+z - \mathbb{E}[x+z])^2] \\ 
+&= \mathbb{E}[(x+z)^2 - 2(x+z)\mathbb{E}[x+z] + \mathbb{E}[x+z]^2] \\
+&= \mathbb{E}[(x+z)^2] - \mathbb{E}[x+z]^2 \\
+&= \mathbb{E}[x^2+2xz+z^2] - (\mathbb{E}[x] + \mathbb{E}[z] )^2 \\
+&= \mathbb{E}[x^2]+\mathbb{E}[2xz]+\mathbb{E}[z^2] - \mathbb{E}[x]^2 - 2\mathbb{E}[x]\mathbb{E}[z]- \mathbb{E}[z]^2 \\
+&= \mathbb{E}[x^2]- \mathbb{E}[x]^2+\mathbb{E}[z^2]- \mathbb{E}[z]^2\\
+&=var[x]+var[z]
+\end{aligned}
+\end{equation}
+QED
+
+\section*{1.11}
+By setting the derivatives of the log likelihood function with respect to $\mu$ and $\sigma^2$ equal to zero:
+\begin{equation}
+\begin{aligned}
+\frac{\partial}{\partial \mu} ln p(\bm{x}|\mu,\sigma^2) & = \frac{1}{\sigma^2}\sum_{n=1}^{N} (x_n-\mu) \\
+&=  \frac{1}{\sigma^2}\sum_{n=1}^{N} x_n-\frac{1}{\sigma^2}\sum_{n=1}^{N}\mu \\
+&= 0
+\end{aligned}
+\end{equation}
+Thus:
+\begin{equation}
+\mu_{ML} = \frac{1}{N}\sum_{n=1}^{N} x_n
+\end{equation}
+In the same way,
+\begin{equation}
+\begin{aligned}
+\frac{\partial}{\partial \sigma^2} ln p(\bm{x}|\mu,\sigma^2) & = \frac{1}{2\sigma^4}\sum_{n=1}^{N} (x_n-\mu)^2 - \frac{N}{2\sigma^2} = 0
+\end{aligned}
+\end{equation}
+Thus:
+\begin{equation}
+\sigma^2_{ML} = \frac{1}{N}\sum_{n=1}^{N} (x_n-\mu_{ML})^2
+\end{equation}
+QED
+
+\section*{1.12}
+If $n=m$, then $\mathbb{E}[x_n^2] = \mu^2 + \sigma^2$, if $n\neq m$, then $\mathbb{E}[x_nx_m] = \mathbb{E}[x_n]\mathbb{E}[x_m] = \mu^2$.
+\begin{equation}
+\begin{aligned}
+\mathbb{E}[\mu_{ML}] = \frac{1}{N}\sum_{n=1}^{N}\mathbb{E}[x_n] = \mu
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\mathbb{E}[\sigma^2_{ML}] &= \frac{1}{N}\sum_{n=1}^{N}\mathbb{E}[(x_n-\mu_{ML})^2] \\
+&= \frac{1}{N}\sum_{n=1}^{N}(\mathbb{E}[x_n^2] - 2 \mathbb{E}[x_n\mu_{ML}]+\mathbb{E}[\mu_{ML}^2])
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\mathbb{E}[x_n^2] &= \mu^2 + \sigma^2 \\
+\mathbb{E}[x_n\mu_{ML}] &= \frac{1}{N}\mathbb{E}[\sum_{m=1}^{N}x_nx_m] = \mu^2 + \frac{1}{N}\sum_{m=1}^{N} I_{mn}\sigma^2 \\
+\mathbb{E}[\mu_{ML}^2] &= \frac{1}{N^2}\sum_{m=1}^{N}\sum_{i=1}^{N} \mathbb{E}[x_mx_i] = \mu^2 + \frac{1}{N}\sigma^2
+\end{aligned}
+\end{equation}
+Thus,
+\begin{equation}
+\begin{aligned}
+\mathbb{E}[\sigma^2_{ML}] &= \frac{1}{N}\sum_{n=1}^{N}(\mathbb{E}[x_n^2] - 2 \mathbb{E}[x_n\mu_{ML}]+\mathbb{E}[\mu_{ML}^2]) \\
+&= \mu^2+\sigma^2 - 2(\mu^2 + \frac{1}{N}\sigma^2) + \mu^2 + \frac{1}{N}\sigma^2 \\
+&= (1-\frac{1}{N})\sigma^2 = \frac{N-1}{N}\sigma^2
+\end{aligned}
+\end{equation}
+QED
+
+\section*{1.13}
+
 
 \end{document}

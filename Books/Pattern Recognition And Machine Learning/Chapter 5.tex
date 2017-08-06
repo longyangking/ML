@@ -1,0 +1,118 @@
+\documentclass[10pt,a4paper,draft]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\author{Yang Long \\ longyang\_123@yeah.net}
+\title{Chapter 5 - Solutions}
+
+\begin{document}
+\maketitle
+\section*{5.1 (not finished yet)}
+Consider a two-layer network as:
+\begin{equation}
+y_k(\bm{x},\bm{w}) = \sigma \left(\sum_{j=1}^{M} \omega^{(2)}_{kj} g\left(\sum_{i=1}^{D} \omega_{ji}^{(1)}x_i +\omega^{(1)}_{j0}\right)+\omega_{k0}^{(2)}\right)
+\end{equation}
+For non-linear activation function $\sigma(x)$, one have:
+\begin{equation}
+\sigma(x)=\frac{1}{1+exp(-x)},\quad \sigma'(x) = \sigma(x)(1-\sigma(x))
+\end{equation}
+For non-linear activation function $tanh(x)$, one have:
+\begin{equation}
+tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}, \quad tanh'(x) = (1 - tanh(x))(1+tanh(x))
+\end{equation}
+As we see,
+\begin{equation}
+\begin{aligned}
+e^{-x} &= \frac{1-\sigma(x)}{\sigma(x)}, \quad e^x = \frac{\sigma(x)}{1-\sigma(x)} \\
+tanh(x) &= \frac{\frac{\sigma(x)}{1-\sigma(x)} - \frac{1-\sigma(x)}{\sigma(x)}}{\frac{\sigma(x)}{1-\sigma(x)} +\frac{1-\sigma(x)}{\sigma(x)}} = \frac{\sigma(x)^2 - (1-\sigma(x))^2}{\sigma(x)^2 + (1-\sigma(x))^2} = \frac{2\sigma(x)-1}{1-2\sigma(x)+2\sigma(x)^2}
+\end{aligned}
+\end{equation}
+
+\section*{5.2}
+To maximize the likelihood function under the conditional distribution, we consider an i.i.d data set, $\{(x_1,t_1),...,(x_N,t_N)\}$:
+\begin{equation}
+\begin{aligned}
+p(\bm{t}|\bm{x},w,\beta) = \prod_{n=1}^{N}\mathcal{N}(t_n|x_n,w,\beta)
+\end{aligned}
+\end{equation}
+After taking logarithm, we obtain
+\begin{equation}
+\begin{aligned}
+lnp(\bm{t}|\bm{x},w,\beta) &= \prod_{n=1}^{N}ln\mathcal{N}(t_n|x_n,w,\beta) \\
+&= -\frac{1}{2}\sum_{n=1}^{N} (t_n-y(x_n,w))^T(\beta\bm{I})(t_n-y(x_n,w)) \\ &+ \sum_{n=1}^{N} ln(\frac{1}{(2\pi)^{D/2}}\frac{1}{|\bm{\Sigma}|^{1/2}}) \\
+&= -\frac{1}{2}\sum_{n=1}^{N} (t_n-y(x_n,w))^T(\beta\bm{I})(t_n-y(x_n,w)) + const\\
+&= -\frac{\beta}{2}\sum_{n=1}^{N} ||t_n-y(x_n,w)||^2+ const \\
+&= -E(w)+ const
+\end{aligned}
+\end{equation}
+Thus, maximizing the likelihood function under conditional distribution for a multi-output network is equivalent to minimizing the sum-of-square error function. QED
+
+\section*{5.29}
+The error function is given by:
+\begin{equation}
+\tilde{E}(w) = E(w) + \lambda \Omega(w)
+\end{equation}
+Thus,
+\begin{equation}
+\begin{aligned}
+\frac{\partial \tilde{E}}{\partial w_i} &= \frac{\partial E}{\partial w_i} + \lambda \frac{\partial \Omega}{\partial w_i} \\
+&=  \frac{\partial E}{\partial w_i} - \lambda  \frac{\sum_{j}\pi_i \frac{\partial}{\partial w_i} \mathcal{N}(w_i|\mu_j,\sigma_j^2)}{\sum_{j}\pi_j \mathcal{N}(w_i|\mu_j,\sigma^2_j)}  \\
+&= \frac{\partial E}{\partial w_i} + \lambda \sum_{j} \frac{\pi_i \mathcal{N}(w_i|\mu_j,\sigma_j^2)}{\sum_{k}\pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)} \frac{(w_i-\mu_j)}{\sigma^2_j} \\
+&= \frac{\partial E}{\partial w_i} + \lambda \sum_{j} \gamma_j(w_i)\frac{(w_i-\mu_j)}{\sigma^2_j}
+\end{aligned} 
+\end{equation}
+where $\gamma_j(w_i) = \frac{\pi_j \mathcal{N}(w_i|\mu_j,\sigma_j^2)}{\sum_{k}\pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)}$. QED
+
+\section*{5.30}
+The error function is given by:
+\begin{equation}
+\tilde{E}(w) = E(w) + \lambda \Omega(w)
+\end{equation}
+Thus,
+\begin{equation}
+\begin{aligned}
+\frac{\partial \tilde{E}}{\partial \mu_j} &= \frac{\partial E}{\partial \mu_i} + \lambda \frac{\partial \Omega}{\partial \mu_j} \\
+&= - \lambda \sum_{i} \frac{\pi_j \frac{\partial}{\partial \mu_j} \mathcal{N}(w_i|\mu_j,\sigma_j^2)}{\sum_{\mu_k}\pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)}  \\
+&= - \lambda \sum_{i} \frac{\pi_j \mathcal{N}(w_i|\mu_j,\sigma_j^2)}{\sum_{\mu_k}\pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)} \frac{(w_i-\mu_j)}{\sigma^2_j} \\
+&= \lambda \sum_{i} \gamma_j(w_i)\frac{(\mu_j-w_i)}{\sigma^2_j}
+\end{aligned} 
+\end{equation}
+where $\gamma_j(w_i) = \frac{\pi_j \mathcal{N}(w_i|\mu_j,\sigma_j^2)}{\sum_{k}\pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)}$. QED
+
+\section*{5.31}
+The error function is given by:
+\begin{equation}
+\tilde{E}(w) = E(w) + \lambda \Omega(w)
+\end{equation}
+Thus,
+\begin{equation}
+\begin{aligned}
+\frac{\partial \tilde{E}}{\partial \sigma_j} &= \frac{\partial E}{\partial \sigma_j} + \lambda \frac{\partial \Omega}{\partial \sigma_j} \\
+&=  - \lambda \sum_{i} \frac{\pi_j \frac{\partial}{\partial \sigma_j} \mathcal{N}(w_i|\mu_j,\sigma_j^2)}{\sum_{\mu_k}\pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)}  \\
+&=  - \lambda \sum_{i} \frac{\pi_j \mathcal{N}(w_i|\mu_j,\sigma_j^2)}{\sum_{\mu_k}\pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)} \left(\frac{1}{\sigma_j} - \frac{(w_i-\mu_j)^2}{\sigma^3_j}\right) \\
+&=  \lambda \sum_{i} \gamma_j(w_i) \left(\frac{1}{\sigma_j} - \frac{(w_i-\mu_j)^2}{\sigma^3_j}\right)
+\end{aligned} 
+\end{equation}
+where $\gamma_j(w_i) = \frac{\pi_j \mathcal{N}(w_i|\mu_j,\sigma_j^2)}{\sum_{k}\pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)}$. QED
+
+\section*{5.32 not finished yet}
+\begin{equation}
+\begin{aligned}
+\frac{\partial \pi_k}{\partial \eta_j} &= \frac{\partial}{\partial \eta_j} \left( \frac{exp(\eta_k)}{\sum_{i=1}^{M}exp(\eta_i)} \right)\\
+&= \delta_{jk}\frac{exp(\eta_j)\sum_{i=1}^{M}exp(\eta_i)}{(\sum_{i=1}^{M}exp(\eta_i))^2} -\frac{exp(\eta_k)exp(\eta_j)}{(\sum_{i=1}^{M}exp(\eta_i))^2} \\
+&= \delta_{jk}\pi_k - \pi_j\pi_k
+\end{aligned} 
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\frac{\partial \tilde{E}}{\partial \eta_j} &=  - \lambda \sum_i \frac{\sum_k (\mathcal{N}(w_i|\mu_k,\sigma_k^2)\frac{\partial \pi_k}{\partial \eta_j} + \pi_k \frac{\partial}{\partial \eta_j}\mathcal{N}(w_i|\mu_k,\sigma^2_k))}{\sum_k \pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)} \\ 
+&=  - \lambda \sum_i \frac{\sum_k (\mathcal{N}(w_i|\mu_k,\sigma_k^2)(\delta_{jk}\pi_j - \pi_j\pi_k))}{\sum_k \pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)} \\&- \lambda \sum_i \frac{\sum_k \pi_k \frac{\partial \sigma_k}{\partial \eta_j}\frac{\partial}{\partial  \sigma_k}\mathcal{N}(w_i|\mu_k,\sigma^2_k)}{\sum_k \pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)} \\
+&=  - \lambda \sum_i \frac{\pi_j\mathcal{N}(w_i|\mu_j,\sigma_j^2) - \pi_j\sum_k\pi_k\mathcal{N}(w_i|\mu_k,\sigma_k^2)}{\sum_k \pi_k \mathcal{N}(w_i|\mu_k,\sigma^2_k)} \\&+ \sum_i \frac{\partial\sigma_i}{\partial \eta_j}\frac{\partial \tilde{E}}{\partial \sigma_i} \\
+&=  - \lambda \sum_i (\gamma_j(w_i) - \pi_j)+\sum_i \frac{\partial\sigma_i}{\partial \eta_j}\frac{\partial \tilde{E}}{\partial \sigma_i}
+\end{aligned} 
+\end{equation}
+
+\end{document}
