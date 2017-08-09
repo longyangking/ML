@@ -340,6 +340,68 @@ Thus,
 QED
 
 \section*{1.13}
+To calculate the expectation of the variance:
+\begin{equation}
+\begin{aligned}
+\mathbb{E}[\sigma^2_{ML}] &= \frac{1}{N}\sum_{n=1}^N \mathbb{E}[(x_n-\mu)^2] \\
+&= \frac{1}{N} \sum_{n=1}^N \sigma^2 \\
+&= \sigma^2
+\end{aligned}
+\end{equation}
+QED
 
+\section*{1.14}
+Consider an arbitrary square matrix with elements $w_{ij}$, $w_{ij} = w_{ij}^S + w_{ij}^A$. Thus,
+\begin{equation}
+\begin{aligned}
+\sum_{i=1}^D \sum_{j=1}^D w_{ij} x_i x_j &= \sum_{i=1}^D \sum_{j=1}^D (w_{ij}^S + w_{ij}^A) x_i x_j \\
+&= \sum_{i=1}^D \sum_{j=1}^D w_{ij}^S x_i x_j + \sum_{i=1}^D \sum_{j=1}^D w_{ij}^A x_i x_j \\
+&= \sum_{i=1}^D \sum_{j=1}^D w_{ij}^S x_i x_j + \sum_{i=1}^D \sum_{j=1}^D \frac{1}{2}(w_{ij}^A + w_{ji}^A) x_i x_j \\
+&= \sum_{i=1}^D \sum_{j=1}^D w_{ij}^S x_i x_j + \sum_{i=1}^D \sum_{j=1}^D \frac{1}{2}(w_{ij}^A - w_{ij}^A) x_i x_j \\
+&= \sum_{i=1}^D \sum_{j=1}^D w_{ij}^S x_i x_j
+\end{aligned}
+\end{equation}
+For matrix $w_{ij}^S$, due to the relationship $w_{ij}^S = w_{ji}^S$, for $i=j$, we have $D$ independent diagonal elements and for $i\ne j$, we have $D(D+1)/2 - D$ independent elements, thus the number of independent parameters in the matrix $w_{ij}^S$ is given by $D(D+1)/2$.
+
+\section*{1.15 not done}
+
+\section*{1.16 not done}
+
+\section*{1.17}
+According to the gamma function definition, we have:
+\begin{equation}
+\begin{aligned}
+\Gamma(x+1) &= \int_0^{\infty} u^{x}e^{-u} du \\
+&= -\int_0^{\infty} u^x d(e^{-u}) \\
+&= -[u^x e^{-u}]_{0}^{\infty} +  \int_0^{\infty}  e^{-u} d(u^x) \\
+&= x\int_0^{\infty}  u^{x-1}e^{-u}du \\
+&= x \Gamma(x)
+\end{aligned}
+\end{equation}
+
+Based on the relationship $\Gamma(x+1) = x\Gamma(x)$, we have:
+\begin{equation}
+\frac{\Gamma(x)}{\Gamma(1)} = \frac{\Gamma(x)}{\Gamma(x-1)}\frac{\Gamma(x-1)}{\Gamma(x-2)}...\frac{\Gamma(2)}{\Gamma(1)} = x(x-1)(x-2)... = x!
+\end{equation}
+Because $\Gamma(1)=1$, $\Gamma(x) = x!$. QED
+
+\section*{1.18}
+\begin{equation}
+\begin{aligned}
+\int_{-\infty}^{\infty} e^{-x_i^2}dx_i &= \frac{1}{\sqrt{\pi}} \\
+\int_0^{\infty} e^{-r^2}r^{D-1}dr &= \frac{1}{2}\int_0^{\infty} e^{-r^2} r^{2 (D/2 - 1)} dr^2 \\
+&= \frac{1}{2}\int_0^{\infty} e^{-u} u^{D/2 - 1} du \\
+&= \frac{1}{2}\Gamma(D/2)
+\end{aligned}
+\end{equation}
+Thus,
+\begin{equation}
+\begin{aligned}
+\prod_{i=1}^{D}\int_{-\infty}^{\infty} e^{-x^2_i} dx_i &= S_D\int_0^{\infty}e^{-r^2}r^{D-1}dr \\
+\pi^{D/2} &= \frac{1}{2} S_D \Gamma(D/2) \\
+S_D &= \frac{2\pi^{D/2}}{\Gamma(D/2)}
+\end{aligned}
+\end{equation}
+QED
 
 \end{document}
