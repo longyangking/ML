@@ -20,33 +20,46 @@ def laplace(x):
                             [0.0,1.0,0.0]])
     return simple_conv(x, laplace_k)
 
-a0 = 1.0e-2
+a0 = 5.0e-3
+V0 = 0
 sess = tf.InteractiveSession()
 
 N = 100
 dx0 = 2.0/N 
-T0 = 5.0
+T0 = 1.0
 dt0 = 0.9*dx0**2/2
 n = int(T0/dt0)
 
-T_init = np.zeros((N,N)).astype('float32')
-T_init[int(N/2),int(N/2)] = 1   # High TemperatTre
+fr_init = np.zeros((N,N)).astype('float32')
+fi_init = np.zeros((N,N)).astype('float32')
+fr_init[int(N/2),int(N/2)] = 1/np.square(2)
+fi_init[int(N/2),int(N/2)] = 1/np.square(2)
 
 dt = tf.placeholder(tf.float32,shape=())
 dx = tf.placeholder(tf.float32,shape=())
 a = tf.placeholder(tf.float32,shape=())
-T = tf.Variable(T_init)
+V = tf.placeholder(tf.float32,shape=())
 
-T_ = T + dt*(a*laplace(T)/dx/dx)
+fr = tf.Variable(fr_init)
+fi = tf.Variable(fi_init)
+
+fr_ = fr + dt*(a*laplace(fi)/dx/dx + V*fi)
+fi_ = fi - dt*(a*laplace(fr)/dx/dx + V*fr)
 
 step = tf.group(
     # Core
-    T[1:-1,1:-1].assign(T_[1:-1,1:-1]),
+    fr[1:-1,1:-1].assign(fr_[1:-1,1:-1]),
+    fi[1:-1,1:-1].assign(fi_[1:-1,1:-1]),
     # BoTndary
-    T[0,:].assign(T[1,:]),
-    T[-1,:].assign(T[-2,:]),
-    T[:,0].assign(T[:,1]),
-    T[:,-1].assign(T[:,-2])
+    fr[0,:].assign(fr[1,:]),
+    fr[-1,:].assign(fr[-2,:]),
+    fr[:,0].assign(fr[:,1]),
+    fr[:,-1].assign(fr[:,-2]),
+
+    fi[0,:].assign(fi[1,:]),
+    fi[-1,:].assign(fi[-2,:]),
+    fi[:,0].assign(fi[:,1]),
+    fi[:,-1].assign(fi[:,-2])
 )
 
 tf.initialize_all_variables().run()
@@ -54,13 +67,12 @@ tf.initialize_all_variables().run()
 print('Starting... with steps {n}'.format(n=n))
 
 for i in range(n):
-    step.run({a:a0,dt:dt0,dx:dx0})
+    step.run({a:a0,dt:dt0,dx:dx0,V:V0})
 
     if i%1000==0:
         print('Complete:{:.2f}%...'.format(i/n*100))
 
-plt.imshow(T.eval(),cmap="hot", extent=[-1,1,-1,1])
-#plt.colorbar()
+plt.imshow(fr.eval(),cmap='jet',interpolation="bicubic")
 plt.xticks([])
 plt.yticks([])
 

@@ -6,6 +6,10 @@
 
 ![](reaction.png)
 
-+ Wave Equation
++ Heat Diffusion Equation
+
+![](heat.png)
 
 + Schrodinger Equation
+
+![](schrodinger.png)
