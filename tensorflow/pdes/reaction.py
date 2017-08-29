@@ -52,8 +52,19 @@ U_ = U + dt*(a*laplace(U)/dx/dx + U - U*U*U - V + k)
 V_ = V + dt*(b*laplace(V)/dx/dx + U - V)/tau
 
 step = tf.group(
-    U.assign(U_),
-    V.assign(V_)
+    # Core
+    U[1:-1,1:-1].assign(U_[1:-1,1:-1]),
+    V[1:-1,1:-1].assign(V_[1:-1,1:-1]),
+    # Boundary
+    U[0,:].assign(U[1,:]),
+    U[-1,:].assign(U[-2,:]),
+    U[:,0].assign(U[:,1]),
+    U[:,-1].assign(U[:,-2]),
+
+    V[0,:].assign(V[1,:]),
+    V[-1,:].assign(V[-2,:]),
+    V[:,0].assign(V[:,1]),
+    V[:,-1].assign(V[:,-2])
 )
 
 tf.initialize_all_variables().run()
