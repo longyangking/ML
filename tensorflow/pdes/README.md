@@ -6,6 +6,6 @@
 
 ![](reaction.png)
 
-+ Wave-Equation Equation
++ Wave Equation
 
-+ Schrodinger Wave Equation
++ Schrodinger Equation
